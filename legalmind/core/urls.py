@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     path("",views.home,name='home'),
-    path("ragbot",views.ragbot,name='ragbot')
+    path("ragbot",views.ragbot,name='ragbot'),
+    path("signup",views.register,name='signup'),
+    path("login",views.login,name='login'),
 ]

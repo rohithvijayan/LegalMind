@@ -6,3 +6,7 @@ def home(request):
 
 def ragbot(request):
     return render(request, 'core/ragbot.html')
+def register(request):
+    return render(request, 'core/signup.html')
+def login(request):
+    return render(request, 'core/login.html')
