@@ -80,7 +80,7 @@ header .buttons .signup:hover {
 
 .hero-text {
     text-align: center;
-    justify-content: center;
+    justify-content: space-between;
     max-width: 50%;
 }
 #brand-h1{font-size: 90px;    color: #6a4df9;

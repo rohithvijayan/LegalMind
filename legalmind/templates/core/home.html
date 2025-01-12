@@ -20,14 +20,14 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="#">Features</a></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
         <div class="buttons">
-            <a href="#" class="login">Log in</a>
+            <a href="{% url 'login' %}" class="login">Log in</a>
             <a href="{% url 'signup' %}" class="signup">Sign up</a>
         </div>
     </header>
@@ -38,13 +38,143 @@
             <p>"Drafting Justice, Tailored for You."</p>
             <div class="cta">
                 <input type="email" placeholder="Enter your email">
-                <button>Get Started</button>
+                <a href="{% url 'login' %}"><button>Get Started</button></a>
             </div>
         </div>
         <div class="hero-image">
             <img src="{% static 'images/hero2.jpeg' %}" alt="Legal Books Illustration">
         </div>
     </section>
+    <div class="Features">
+        <span id="features-title"><h1 id="features-h1">Features</h1></span>
+        <span id="features-cards">
 
+        <div class="plan">
+            <div class="inner">
+            
+                <h3 class="title">Automated Document Drafting</h3>
+                <p class="info">"Effortlessly draft accurate legal documents with AI-powered automation."</p>
+                <ul class="features">
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span><strong>Time-Saving Efficiency</strong> </span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span> <strong>Error Reduction</strong></span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span><strong>Versatility</strong></span>
+                    </li>
+                </ul>
+                <div class="action">
+                <a class="button" href="#">
+                    Draft Documents Now!
+                </a>
+                </div>
+            </div>
+        </div>
+        <div class="plan">
+            <div class="inner">
+                <h3 class="title"><strong>Ai Lawyer</strong> <br>ChatBot</h3>
+                <p class="info">"Your virtual legal advisor, providing instant, accurate, and accessible legal assistance 24/7."
+                </p>
+                <ul class="features">
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span><strong>Expert Legal Insights</strong>  </span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span> <strong>Simplified Legal Jargon</strong></span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span><strong>Always Available & Free!</strong></span>
+                    </li>
+                </ul>
+                <div class="action">
+                <a class="button" href="#">
+                    Get  Instant Ai Legal Help 
+                </a>
+                </div>
+            </div>
+        </div>
+        <div class="plan">
+            <div class="inner">
+
+                <p class="title">Chat With Legal Documents</p>
+                <p class="info">"Get instant, accurate answers from your legal documents using AI-powered RAG technology."
+                </p>
+                <ul class="features">
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span><strong>Enhanced Search</strong> </span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span> <strong>Reliable Context</strong></span>
+                    </li>
+                    <li>
+                        <span class="icon">
+                            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                            </svg>
+                        </span>
+                        <span>AI-Powered Insights</span>
+                    </li>
+                </ul>
+                <div class="action">
+                <a class="button" href="#">
+                    RAG ChatBot
+                </a>
+                </div>
+            </div>
+        </div>  
+        </span>
+    </div>
+    <footer></footer>
 </body>
 </html>
