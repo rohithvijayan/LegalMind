@@ -61,15 +61,12 @@
         <main class="main-content">
             <!-- Chat Section -->
             <section class="chat-section">
-                <div class="chat">
-                    <div class="chat-bubble user">What are the implications of breaking a rental lease early?</div>
-                    <div class="chat-bubble bot">Breaking a lease can result in penalties, such as paying an early termination fee or finding a replacement tenant. Check your lease for specific terms.</div>
-                    <div class="chat-bubble user">How much notice do I need to give before terminating a rental agreement?</div>
-                    <div class="chat-bubble bot">Most rental agreements require at least 30 days' notice. However, the exact period depends on the terms specified in your contract.</div>
+                <div class="chat" id="chat">
+                    <div class="chat-bubble bot" id="chat-bubble-bot">Welcome To Demo ChatBot !</div>
                 </div>
                 <div class="chat-input">
-                    <input type="text" placeholder="Chat With Your Document!">
-                    <button class="send-button">➤</button>
+                    <input type="text" placeholder="Chat With Your Document!" id="user-msg-input" >
+                    <button class="send-button" id="send-btn" onclick=RagChat()>➤</button>
                 </div>
             </section>
 
@@ -77,7 +74,7 @@
             <section class="document-section">
                 <div class="document-controls">
                     <button class="upload-button">Upload Legal Document</button>
-                    <button class="process-button">PROCESS</button>
+                    <button class="process-button" >PROCESS</button>
                     <label class="checkbox-label">
                         <input type="checkbox" checked> Lease_Deed.pdf
                     </label>
@@ -88,5 +85,6 @@
             </section>
         </main>
     </div>
+    <script src="{% static 'js/ragbot.js' %}"></script>
 </body>
 </html>
