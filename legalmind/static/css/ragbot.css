@@ -1,0 +1,220 @@
+
+/* General Styling */
+*{margin: 0;padding: 0;box-sizing: border-box;}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    color: #333;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+}
+#main-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+#main-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#main-header .logo img {
+    width: 30px;
+    margin-right: 10px;
+
+}
+#logo-brand{  color:#5F9BEB;font-weight: bolder;font-size: 20px;}
+#main-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+#main-header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+#main-header nav ul li a:hover {
+    color: #6a4df9;
+}
+
+#main-header .buttons a {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+#main-header .buttons .login {
+    background-color: white;
+    border: 1px solid #6a4df9;
+    color: #6a4df9;
+}
+
+#main-header .buttons .login:hover {
+    background-color: #6a4df9;
+    color: white;
+}
+
+#main-header .buttons .signup {
+    background-color: #6a4df9;
+    color: white;
+}
+
+#main-header .buttons .signup:hover {
+    background-color: #533ccf;
+}
+/* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+}
+#header-left{display: flex;flex-direction: row;justify-content: space-evenly;gap: 10px;align-items: center;}
+.back-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.reload-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Chat Section */
+.chat-section {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.chat-bubble {
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.chat-bubble.user {
+    background-color: #e0f7fa;
+    align-self: flex-start;
+}
+
+.chat-bubble.bot {
+    background-color: #e8eaf6;
+    align-self: flex-end;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.send-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Document Section */
+.document-section {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.document-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.upload-button, .process-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.document-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    height: 300px;
+    background-color: #f9f9f9;
+}
