@@ -6,5 +6,6 @@ urlpatterns = [
     path("ragbot",views.ragbot,name='ragbot'),
     path("signup",views.register,name='signup'),
     path("login",views.login,name='login'),
-    path("api/ragchat/",views.ragchat,name='ragchat')
+    path("api/ragchat/",views.ragchat,name='ragchat'),
+    path("api/uploadFile/",views.fileHandler,name='uploadFile'),
 ]

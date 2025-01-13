@@ -76,11 +76,13 @@
             <!-- Document Preview Section -->
             <section class="document-section">
                 <div class="document-controls">
-                    <button class="upload-button">Upload Legal Document</button>
-                    <button class="process-button" >PROCESS</button>
-                    <label class="checkbox-label">
-                        <input type="checkbox" checked> Lease_Deed.pdf >
-                    </label>
+                    <span>
+                        <input type="file" name="legal-doc"  accept=".pdf" id="uploadedFile">
+                        <button type="button" class="upload-button" id="upload-button" onclick=uploadFile()>UPLOAD FILE</button>
+                    </span>
+                    <span>                    
+                        <button class="process-button" >PROCESS</button>
+                    </span>
                 </div>
                 <div class="document-preview">
                     <img src="preview-placeholder.png" alt="Document Preview">

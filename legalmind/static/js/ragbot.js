@@ -22,3 +22,19 @@ async function RagChat(){
     chatDiv.appendChild(botBubble)
     console.log("reply from bot:",reply.botReply)
 }
+
+async function uploadFile(){
+    const uploadInput=document.getElementById("uploadedFile")
+    const file=uploadInput.files[0]
+    console.log(file)
+    const fd=new FormData()
+    uploadInput.files[0]=''
+    fd.append("file",file,file.name)
+    const repsonse =await fetch("http://127.0.0.1:8000/api/uploadFile/",{
+        method:"POST",
+        body:fd
+    })
+    const responseJson=await repsonse.json()
+    console.log(responseJson)
+
+}

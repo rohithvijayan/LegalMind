@@ -195,12 +195,20 @@ body {
 .document-controls {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     margin-bottom: 20px;
 }
-
-.upload-button, .process-button {
+.upload-button{ background-color: #007bff;
+    width: 100px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;}
+ .process-button {
     background-color: #007bff;
+    width: 100px;
     color: white;
     border: none;
     padding: 10px;
@@ -224,3 +232,5 @@ body {
     height: 300px;
     background-color: #f9f9f9;
 }
+
+
