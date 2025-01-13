@@ -19,8 +19,9 @@ def login(request):
 @csrf_exempt
 def ragchat(request):
     if request.method == 'POST':
-        data=json.loads(request.body)
-        user_message=(data.get('message'))
+        #data=json.loads(request.body.POST.get("message"))
+        #print(data)
+        user_message=request.POST.get('message')
         print(user_message)
         response=model.generate_content(f'Generate A  concise reply for the following message from user:{user_message}.STRICTLY AVOID USING SYMBOLS IN RESPONSE<MAKE SURE THE RESPONS IS CLEAN RAW FORMATTED TEXT')
         print(response.text)

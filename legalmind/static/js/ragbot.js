@@ -1,4 +1,5 @@
 async function RagChat(){
+    const fd=new FormData();
     const msgInput=document.getElementById("user-msg-input")
     const userMessage=msgInput.value
     const userBubble=document.createElement("div")
@@ -10,15 +11,11 @@ async function RagChat(){
     chatDiv.appendChild(userBubble)
     console.log("USER MESSAGE IS : ",userMessage);
     msgInput.value=""
+    fd.append("message",userMessage)
     const response=await fetch("http://127.0.0.1:8000/api/ragchat/",{
         method:"POST",
-        headers:{
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify({
-            message:userMessage
-        })
-    })
+        body:fd
+    });
     const reply=await response.json()
     const botMessage=reply.botReply
     botBubble.textContent=botMessage

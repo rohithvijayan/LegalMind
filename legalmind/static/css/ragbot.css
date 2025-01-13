@@ -125,12 +125,15 @@ body {
 
 /* Chat Section */
 .chat-section {
-    flex: 1;
+   display: flex;
+   flex: 1;
+   flex-direction: column;
+   justify-content: space-between;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-height: 500px;
+    max-height: 396px;
     overflow-y: scroll;
 }
 
@@ -160,7 +163,7 @@ body {
 
 .chat-input {
     display: flex;
-    position: relative;
+    position: static;
     gap: 10px;
 }
 
