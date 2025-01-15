@@ -154,6 +154,10 @@ body {
 #chat-bubble-user,.chat-bubble.user {
     background-color: #e0f7fa;
     align-self: flex-start;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    line-height: 1.5;
 }
 
 #chat-bubble-bot,.chat-bubble.bot {
@@ -215,7 +219,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
+#processing_loader{display: none;}
 .checkbox-label {
     font-size: 14px;
     display: flex;

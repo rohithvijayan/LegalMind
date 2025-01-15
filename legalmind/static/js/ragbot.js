@@ -28,7 +28,6 @@ async function uploadFile(){
     const file=uploadInput.files[0]
     console.log(file)
     const fd=new FormData()
-    uploadInput.files[0]=''
     fd.append("file",file,file.name)
     const repsonse =await fetch("http://127.0.0.1:8000/api/uploadFile/",{
         method:"POST",
@@ -37,4 +36,17 @@ async function uploadFile(){
     const responseJson=await repsonse.json()
     console.log(responseJson)
 
+}
+function clearFile(){
+    const uploadInput=document.getElementById("uploadedFile")
+    uploadInput.value=''
+}
+
+async function Process(){
+    const processLoader=document.getElementById("processing_loader")
+    processLoader.style.display="block"
+    const response=await fetch("http://127.0.0.1:8000/api/process/")
+    const responseJson=await response.json()
+    processLoader.style.display="none"
+    console.log("STATUS OF EMBEDDING:",responseJson)
 }

@@ -52,10 +52,6 @@
                     <h1>LegalMind RAG BOT</h1>
                 </div>
             </div>
-            
-            <div class="header-right">
-                <button class="reload-button">Reload ▼</button>
-            </div>
         </header>
 
         <main class="main-content">
@@ -77,12 +73,16 @@
             <section class="document-section">
                 <div class="document-controls">
                     <span>
-                        <input type="file" name="legal-doc"  accept=".pdf" id="uploadedFile">
+                        <input type="file" name="legal-doc"  accept=".pdf" id="uploadedFile" reset>
                         <button type="button" class="upload-button" id="upload-button" onclick=uploadFile()>UPLOAD FILE</button>
+                        <button type="button" class="upload-button" id="upload-button" onclick=clearFile()>RESET </button>
+
                     </span>
-                    <span>                    
-                        <button class="process-button" >PROCESS</button>
+                    <span id="process">                    
+                        <button class="process-button" onclick=Process() >PROCESS</button>
+                        <h5 id="processing_loader">PROCESSING...</h5>
                     </span>
+                
                 </div>
                 <div class="document-preview">
                     <img src="preview-placeholder.png" alt="Document Preview">

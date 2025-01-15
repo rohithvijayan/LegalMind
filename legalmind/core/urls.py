@@ -8,4 +8,5 @@ urlpatterns = [
     path("login",views.login,name='login'),
     path("api/ragchat/",views.ragchat,name='ragchat'),
     path("api/uploadFile/",views.fileHandler,name='uploadFile'),
+    path("api/process/",views.embedder,name='process'),
 ]
