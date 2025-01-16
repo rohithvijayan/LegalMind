@@ -1,5 +1,7 @@
+*{padding: 0;margin: 0;}
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f9f9ff;
     color: #333;
@@ -43,34 +45,31 @@ header nav ul li a:hover {
 
 }
 
-header .buttons a {
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-header .buttons .login {
-    background-color: white;
-    border: 1px solid #6a4df9;
-    color: #6a4df9;
-}
-
-header .buttons .login:hover {
-    background-color: #6a4df9;
-    color: white;
-}
-
-header .buttons .signup {
-    background-color: #6a4df9;
-    color: white;
-}
-
-header .buttons .signup:hover {
-    background-color: #533ccf;
-}
-
+.buttons{display: flex;flex-direction: row;justify-content: space-between;gap: 2vh;text-align: center;align-items: center;}
+.login{text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;background-color: white;
+  border: 1px solid #6a4df9;
+  color: #6a4df9;}
+.signup{background-color: #6a4df9;
+  color: white; text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;}
+#logout{text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;background-color: white;
+  border: 1px solid #6a4df9;
+  color: #6a4df9;}
+.login :hover{ background-color: #6a4df9;
+  color: white;}
+.signup :hover{background-color: #533ccf;}
+#logout:hover{background-color: #6558d3;color: #fff;}
 .hero {
     display: flex;
     flex-direction: row;
@@ -83,7 +82,7 @@ header .buttons .signup:hover {
     max-width: 50%;
 }
 #brand-h1{font-size: 90px;    color: #6a4df9;
-    margin-bottom: -20px;
+    margin-bottom: 10px;
 }
 .hero-text h2 {
     font-size: 2.5rem;
@@ -147,7 +146,7 @@ header .buttons .signup:hover {
 }
 #features-title{padding-top: 10px;}
 #features-h1{font-size: 45px;    color: #6a4df9;font-style: italic;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;opacity: 80%;}
-#features-cards{display: flex;flex-direction: row;justify-content: space-around;}
+#features-cards{display: flex;flex-direction: row;justify-content: space-around;padding-bottom: 100px;}
 footer {
     text-align: center;
     padding: 10px;

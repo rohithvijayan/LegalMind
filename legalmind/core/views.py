@@ -1,12 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt,csrf_protect
 import json
 import os
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 import google.generativeai as genai
 import os
+from dotenv import load_dotenv
+import json
+##User authentication imports
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth.decorators import login_required
+################################################################
 ##rag-libraries##
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
@@ -24,9 +31,8 @@ from langchain_core.prompts import ChatPromptTemplate,BaseChatPromptTemplate
 genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
 OPENAI_API_KEY=os.environ.get("OPENAI_API_KEY") 
 model = genai.GenerativeModel("gemini-1.5-flash")
-pinecone_api_key='pcsk_jgLR3_QvZDbNgoPsjNFiNscJtcw8jnnhLSira283uCptMVCPy7DjXqRZ6KnjWYv6H5gDN'
 openaiEmbedding=OpenAIEmbeddings(model="text-embedding-ada-002")
-pc=Pinecone(api_key=pinecone_api_key)
+pc=Pinecone(api_key=os.environ.get('PINECONE_API_KEY'))
 spec=ServerlessSpec(cloud='aws',region='us-east-1')
 index_name = "rag-bot-index"
 namespace = "rag-rohith"
@@ -35,15 +41,57 @@ file_name=""
 retrieval_chain=None
 combine_docs_chain=None
 # Create your views here.
+load_dotenv()
 def home(request):
     return render(request, 'core/home.html')
 
+@login_required
 def ragbot(request):
     return render(request, 'core/ragbot.html')
-def register(request):
-    return render(request, 'core/signup.html')
-def login(request):
+@csrf_exempt
+def login_page(request):
     return render(request, 'core/login.html')
+def register_page(request): 
+    return render(request, 'core/signup.html')
+@csrf_exempt
+def register(request):
+ if request.method=="POST":
+            data=json.loads(request.body)
+            print(data)
+            user_name=data.get("username")
+            email=data.get("email")
+            password=data.get("password")
+            re_password=data.get("rePassword")
+            print(f"username={user_name} email={email} password={password}  re_password={re_password}")
+            if password==re_password:
+                #store the user data in the database
+                user=User.objects.create_user(username=user_name,email=email,password=password)                
+                user.save()
+                print(f"user name={user.username}\temailid={user.email}\tpassword={user.password}")
+                #here you can use Django's built-in User model or any other database to store user data
+                return JsonResponse({"message":"Registration successful",'username':user.username})
+            else:
+                return JsonResponse({"message":"registration failed,passwords do not match"})
+@csrf_exempt
+def signin(request):
+    if request.method=="POST":
+        data=json.loads(request.body)
+        username=data.get("username")
+        password=data.get("password")
+        print(f'login page-->email={username}\t\tpassword={password}')
+        user=authenticate(username=username,password=password)
+        print(f'authenticate function-->user={user}')
+        if user is not None:
+            login(request,user)
+            #user_name=request.user.get_username()
+            return JsonResponse({"message":"Login successful"})
+
+        else:
+            return JsonResponse({"message":"Login failed, invalid credentials"})
+def signout(request):
+    if request.method=="POST":
+            logout(request)
+            return redirect("home")    
 @csrf_exempt
 def ragchat(request):
     global retrieval_chain
@@ -57,7 +105,6 @@ def ragchat(request):
         answer=response['answer']
         print(answer)
         return JsonResponse({"botReply":answer})
-    
     
 @csrf_exempt
 def fileHandler(request):

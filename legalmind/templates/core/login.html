@@ -28,8 +28,8 @@
             </ul>
         </nav>
         <div class="buttons">
-            <a href="{% url 'login' %}" class="login">Log in</a>
-            <a href="{% url 'signup' %}" class="signup">Sign up</a>
+            <a href="{% url 'login_page' %}" class="login">Log in</a>
+            <a href="{% url 'signup_page' %}" class="signup">Sign up</a>
         </div>
     </header>
     <section class="hero">
@@ -41,19 +41,20 @@
  
         </div>
         <div id="login" class="w-1/3 h-1/2 bg-indigo-50 rounded shadow flex flex-col justify-between p-3">       
-            <form class="text-indigo-500" action="" method="post">
+            <form class="text-indigo-500"  method="post">
+                {% csrf_token %}
                 <fieldset class="border-4 border-dotted border-indigo-500 p-5">
                     <legend class="px-2 italic -mx-2">Login Back To LegalMind!</legend>
-                    <label class="text-xs font-bold after:content-['*'] after:text-red-400" for="email">Email </label>     
-                    <input class="w-full p-2 mb-2 mt-1 outline-none ring-none focus:ring-2 focus:ring-indigo-500" type="email" required="">   
+                    <label class="text-xs font-bold after:content-['*'] after:text-red-400" for="username">User Name </label>     
+                    <input class="w-full p-2 mb-2 mt-1 outline-none ring-none focus:ring-2 focus:ring-indigo-500" type="text" required="" name="username" id="name">   
                     <label class="text-xs font-bold after:content-['*'] after:text-red-400" for="password">Password  </label>
-                    <input class="w-full p-2 mb-2 mt-1 outline-none ring-none focus:ring-2 focus:ring-indigo-500" type="password" required="">
+                    <input class="w-full p-2 mb-2 mt-1 outline-none ring-none focus:ring-2 focus:ring-indigo-500" type="password" required="" name="password" id="password">
                     <hr><hr><hr>
-                    <button class="w-full rounded bg-indigo-500 text-indigo-50 p-2 text-center font-bold hover:bg-indigo-400">Log In</button>
+                    <button class="w-full rounded bg-indigo-500 text-indigo-50 p-2 text-center font-bold hover:bg-indigo-400" type="button" onclick=Login()>Log In</button>
                 </fieldset>
                  </form>
         </div>
     </section>
-
+    <script src="{% static 'js/login.js' %}"></script>
 </body>
 </html>
