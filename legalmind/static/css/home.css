@@ -59,7 +59,7 @@ header nav ul li a:hover {
   border-radius: 5px;
   font-weight: 500;
   transition: background-color 0.3s ease;}
-#logout{text-decoration: none;
+  input #logout{text-decoration: none;
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: 500;
@@ -137,14 +137,13 @@ header nav ul li a:hover {
     text-align: center;
     background-color: #ebebf8;
     opacity: 100%;
-    height: 25rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     padding-top: 30px;
-    padding-bottom: 70px;
-    justify-content: space-around;
-}
-#features-title{padding-top: 10px;}
+    padding-bottom: 50px;
+    justify-content: space-around;}
+#features-title{padding-top: 20px;padding-bottom: 20px;}
 #features-h1{font-size: 45px;    color: #6a4df9;font-style: italic;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;opacity: 80%;}
 #features-cards{display: flex;flex-direction: row;justify-content: space-around;padding-bottom: 100px;}
 footer {

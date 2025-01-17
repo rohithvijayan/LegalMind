@@ -198,12 +198,22 @@ body {
 
 .document-controls {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    margin-bottom: 20px;
+    
 }
 .upload-button{ background-color: #007bff;
+    width: 100px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;}
+
+.reset-button,#reset-button{
+    background-color: #007bff;
     width: 100px;
     color: white;
     border: none;
@@ -217,8 +227,11 @@ body {
     border: none;
     padding: 10px;
     border-radius: 5px;
+    align-items: center;
     cursor: pointer;
+    position: sticky;
 }
+#uploadedFile{width: 200px;}
 #processing_loader{display: none;}
 .checkbox-label {
     font-size: 14px;
@@ -227,13 +240,14 @@ body {
 }
 
 .document-preview {
-    display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 10px;
-    height: 300px;
+    margin-top: 10px;
+    width: 100%;
+    height: 500px;
     background-color: #f9f9f9;
 }
 

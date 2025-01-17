@@ -26,12 +26,17 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-        <div class="buttons" id="buttons">
+        <div class="buttons" id="buttons" style="display: flex;flex-direction: row;justify-content: space-between;gap: 2vh;text-align: center;align-items: center;text-transform: capitalize;">
             {% if user.is_authenticated %}
             <h3>{{user.username}}</h3>
             <form action="{% url 'logout' %}" method="POST">
                 {% csrf_token %}
-                <button id="logout" type="submit">Log Out</button>
+                <button id="logout" type="submit" style="padding: 10px 20px;
+                border-radius: 5px;
+                font-weight: 500;
+                transition: background-color 0.3s ease;background-color: white;
+                border: 1px solid #6a4df9;
+                color: #6a4df9;">Log Out</button>
             </form>
             {% else %}
             <a href="{% url 'login_page' %}" class="login">Log in</a>
@@ -142,7 +147,7 @@
             <div class="plan">
                 <div class="inner">
 
-                    <p class="title">Chat With Legal Documents</p>
+                    <p class="title">Chat With Your Legal Documents</p>
                     <p class="info">"Get instant, accurate answers from your legal documents using AI-powered RAG technology."
                     </p>
                     <ul class="features">
@@ -175,7 +180,7 @@
                         </li>
                     </ul>
                     <div class="action">
-                    <a class="button" href="#">
+                    <a class="button" href="{% url 'ragbot' %}">
                         RAG ChatBot
                     </a>
                     </div>

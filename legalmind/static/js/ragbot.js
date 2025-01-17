@@ -26,6 +26,13 @@ async function RagChat(){
 async function uploadFile(){
     const uploadInput=document.getElementById("uploadedFile")
     const file=uploadInput.files[0]
+    if(file.type==="application/pdf"){
+        const fileURL=URL.createObjectURL(file)
+        document.getElementById("doc-prev").src=fileURL
+    }
+    else{
+        alert("Please upload a PDF file.")
+    }
     console.log(file)
     const fd=new FormData()
     fd.append("file",file,file.name)
@@ -35,11 +42,16 @@ async function uploadFile(){
     })
     const responseJson=await repsonse.json()
     console.log(responseJson)
+    const pdfPrev=document.getElementById("doc-prev").src
+    console.log(pdfPrev)
+    file_path=`../../media/${file.name}`
+    
 
 }
 function clearFile(){
     const uploadInput=document.getElementById("uploadedFile")
     uploadInput.value=''
+    document.getElementById("doc-prev").src='../../media/PDF Viewer.png'
 }
 
 async function Process(){
