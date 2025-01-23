@@ -26,7 +26,7 @@ from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain import hub
 from langchain_openai.embeddings import OpenAIEmbeddings
-from langchain_core.prompts import ChatPromptTemplate,BaseChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 ################################################################
 genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
 OPENAI_API_KEY=os.environ.get("OPENAI_API_KEY") 
@@ -36,7 +36,11 @@ pc=Pinecone(api_key=os.environ.get('PINECONE_API_KEY'))
 spec=ServerlessSpec(cloud='aws',region='us-east-1')
 index_name = "rag-bot-index"
 namespace = "rag-rohith"
-prompt=ChatPromptTemplate.from_messages([("system","You are a specialized Indian Legal Expert chatbot designed to provide concise, context-specific responses related to Indian laws, including the Indian Penal Code and other relevant legislations. Answer user questions in simple, clear, and precise language, ensuring brevity while maintaining accuracy. Avoid technical jargon and symbols, and if legal terms are used, briefly explain them in layman's terms for clarity. Focus on delivering highly relevant and to-the-point replies, suitable for quick understanding without unnecessary details.:<context>{context}</context>"),("human","{input}")])
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a specialized Indian Legal Expert chatbot designed to provide concise, context-specific responses related to Indian laws, including the Indian Penal Code and other relevant legislations. Use only the provided context to answer questions,context='{context}', and if the context is not sufficient, respond with: 'Sorry, I couldn't find an answer related to the uploaded document.'"),
+    ("human", "{input}")
+])
+
 file_name=""
 retrieval_chain=None
 combine_docs_chain=None
@@ -121,14 +125,14 @@ def extract_text(file_name):
     loader=PyPDFLoader(f'./media/{file_name}')
     doc=loader.load()
     ##extract the text from the pdf
-    text_splitter=CharacterTextSplitter(separator='\n',chunk_size=1000,chunk_overlap=200)
+    text_splitter=CharacterTextSplitter(separator='\n',chunk_size=512,chunk_overlap=150)
     chunks=text_splitter.split_documents(doc)
     print(f'number of chunks is:{len(chunks)}')
     return chunks
 def create_index_pc():
     global index_name,pc,spec,namespace,openaiEmbedding
     if index_name not in pc.list_indexes().names():
-        pc.create_index(name=index_name,spec=spec,metric='cosine',dimension=1536)
+        pc.create_index(name=index_name,spec=spec,metric='euclidean',dimension=1536)
         while not pc.describe_index(index_name).status['ready']:
             time.sleep(2)
     
@@ -138,8 +142,8 @@ def embedding_creator(chunks):
     time.sleep(4)
     return embeddings
 def create_rag_chain(embeddings):
-    llm=ChatOpenAI(api_key=OPENAI_API_KEY,model_name='gpt-4o-mini',temperature=0.0)
-    retreiver=embeddings.as_retriever(search_kwargs={"k": 5})
+    llm=ChatOpenAI(api_key=OPENAI_API_KEY,model_name='gpt-4o-mini',temperature=0.3)
+    retreiver=embeddings.as_retriever(search_kwargs={"k": 8})
     combine_docs_chain=create_stuff_documents_chain(llm=llm,prompt=prompt)
     retreival_chain=create_retrieval_chain(retreiver,combine_docs_chain)
     return retreival_chain
