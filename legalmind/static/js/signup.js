@@ -20,5 +20,9 @@ async function signup(){
         // Simulate an HTTP redirect:
         window.location.replace("http://127.0.0.1:8000/");
     }
+    else if(responseJson.message=='Registration Failed, Username Already Exists'){
+        console.log('Registration Failed, Username Already Exists')
+        window.alert('Registration Failed, Username Already Exists')
+    }
 
 }

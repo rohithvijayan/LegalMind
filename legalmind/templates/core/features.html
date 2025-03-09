@@ -1,3 +1,4 @@
+{% load  static %}
 <!DOCTYPE html>
 
 <html>
@@ -7,7 +8,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../../static/css/features.css">
+        <link rel="stylesheet" href="{% static 'css/features.css' %}">
     </head>
     <body>
 |   <div class="container">
@@ -45,97 +46,158 @@
                 {% endif %}
             </div>
         </header>
-        <div class="features">
-<!-- From Uiverse.io by joe-watson-sbf --> 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <h1 class="title">Automated Document Drafting</h1>
-                        <h3>Hover Me</h3>
-                    </div>
-                    <div class="flip-card-back">
-                        <div class="flip-card-back-top">
-                            <h2 class="title">Effortlessly Draft Accurate Legal Documents</h2>
-                            <h4>AI-Powered Automation at Your Fingertips</h4>
-                        </div>
-                       <div class="flip-card-back-body">
-                        <h2>💼 Time-Saving Efficiency</h2>
-                        <h4>Create legal documents in minutes, saving valuable time for what matters most.
-                        </h4>
-                        <h3>✔️ Error Reduction
-                        </h3>
-                        <h4>Say goodbye to mistakes. AI ensures accuracy and compliance with legal standards.</h4>
-                        <h3>🔄 Versatility</h3>
-                        <h4>From contracts to agreements, draft various document types tailored to your needs.
-
-                        </h4>
-                       </div>
-                        
-                    </div>
+        <div class="hero">
+            <div class="hero-text">
+                <h1 id="brand-h1">Legal Mind</h1>
+                <h2>AI Powered Legal Assistant</h2>
+                <p>"Drafting Justice, Tailored for You."</p>
+                <div class="cta">
+                    <input type="email" placeholder="Enter your email">
+                    <a href="{% url 'login_page' %}"><button>Get Started</button></a>
                 </div>
             </div>
-<!-- From Uiverse.io by joe-watson-sbf --> 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <h1 class="title">Chat With Your Documents</h1>
-                        <p>Hover Me</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <div class="flip-card-back-top">
-                            <h2 class="title">Chat With Your Legal Documents</h2>
-                            <p>Get instant, accurate answers from your legal documents using AI-powered RAG technology.
-                            </p>
-                        </div>
-                        <div class="flip-card-back-body">
-                            <h3>🔍 Enhanced Search</h3>
-                            <h4>Quickly locate specific clauses, terms, or sections with precision.
-                            </h4>
-                            <h3>📚 Reliable Context
-                            </h3>
-                            <h4>Gain a clear understanding of your documents with AI-driven context explanations.
-                            </h4>
-                            <h3>🤖 AI-Powered Insights:</h3>
-                            <h4>Simplify legal complexities with actionable insights tailored to your queries.
-    
-                            </h4>
-                        </div>
-                        
-                    </div>
-                </div>
+            <div class="hero-image">
+                <img src="{% static 'images/hero2.jpeg' %}" alt="Legal Books Illustration">
             </div>
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <h1 class="title">Ai Legal Assistance</h1>
-                        <p>Hover Me</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <div class="flip-card-back-top">
-                            <h2 class="title">AI Lawyer ChatBot
-                            </h2>
-                            <p>Your virtual legal advisor, providing instant, accurate, and accessible legal assistance 24/7.</p>
-                        </div>
-                        <div class="flip-card-back-body">
-                            <h3>🧠 Expert Legal Insights
-                            </h3>
-                            <h4>Access precise and reliable information on Indian laws, powered by advanced AI.
-                            </h4>
-                            <h3>🗣️ Simplified Legal Jargon
-    
-                            </h3>
-                            <h4>We break down complex legal terms into easy-to-understand language.</h4>
-                            <h3>⏱️ Always Available & Free
-                            </h3>
-                            <h4>Get assistance anytime, anywhere, without spending a dime!
-                            </h4>
-                        </div>
-                    </div>
-                </div>
-            </div>     
-
         </div>
-        <footer></footer>
+        <div class="features">
+            <div class="title">
+               <h2>Legal Mind Features</h2> 
+            </div><br>
+            <div class="feature">
+                <div class="plan">
+                    <div class="inner">
+                    
+                        <h3 class="title">Automated Document Drafting</h3>
+                        <p class="info">"Effortlessly draft accurate legal documents with AI-powered automation."</p>
+                        <ul class="features">
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span><strong>Time-Saving Efficiency</strong> </span>
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span> <strong>Error Reduction</strong></span>
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span><strong>Versatility</strong></span>
+                            </li>
+                        </ul>
+                        <div class="action">
+                        <a class="button" href="#">
+                            Draft Documents Now!
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-text"></div>
+            </div><br>
+            <div class="feature">
+
+                <div class="plan">
+                    <div class="inner">
+                    
+                        <h3 class="title">Automated Document Drafting</h3>
+                        <p class="info">"Effortlessly draft accurate legal documents with AI-powered automation."</p>
+                        <ul class="features">
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span><strong>Time-Saving Efficiency</strong> </span>
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span> <strong>Error Reduction</strong></span>
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span><strong>Versatility</strong></span>
+                            </li>
+                        </ul>
+                        <div class="action">
+                        <a class="button" href="#">
+                            Draft Documents Now!
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-text"></div>
+            </div><br>
+            <div class="feature">
+                <div class="plan">
+                    <div class="inner">
+                    
+                        <h3 class="title">Automated Document Drafting</h3>
+                        <p class="info">"Effortlessly draft accurate legal documents with AI-powered automation."</p>
+                        <ul class="features">
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span><strong>Time-Saving Efficiency</strong> </span>
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span> <strong>Error Reduction</strong></span>
+                            </li>
+                            <li>
+                                <span class="icon">
+                                    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                                    </svg>
+                                </span>
+                                <span><strong>Versatility</strong></span>
+                            </li>
+                        </ul>
+                        <div class="action">
+                        <a class="button" href="#">
+                            Draft Documents Now!
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-text"></div>
+            </div>
+        </div>        
     </div>
     </body>
 </html>

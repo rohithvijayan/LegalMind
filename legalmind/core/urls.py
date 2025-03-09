@@ -4,8 +4,10 @@ from . import views
 urlpatterns = [
     path("",views.home,name='home'),
     path("ragbot",views.ragbot,name='ragbot'),
+    path("legalbot",views.legalbot,name='legalbot'),
     path("signup",views.register_page,name='signup_page'),
     path("login",views.login_page,name='login_page'),
+    path("features",views.features,name='features'),
     path("api/ragchat/",views.ragchat,name='ragchat'),
     path("api/uploadFile/",views.fileHandler,name='uploadFile'),
     path("api/process/",views.embedder,name='process'),

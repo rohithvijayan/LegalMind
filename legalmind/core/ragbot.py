@@ -13,7 +13,7 @@ from langchain_openai.embeddings import OpenAIEmbeddings
 
 from langchain_core.prompts import ChatPromptTemplate
 
-loader=PyPDFLoader("./trial.pdf")
+loader=PyPDFLoader("/home/rohithvijayan/Desktop/s8_project/legalmind/core/ipc_act.pdf")
 docs=loader.load()
 
 
@@ -22,12 +22,12 @@ chunks=text_splitter.split_documents(docs)
 print(f'number of chunks is {len(chunks)}')
 #print(chunks)
 
-openaiEmbedding=OpenAIEmbeddings(model="text-embedding-3-large")
-model_name = 'multilingual-e5-large'
+openaiEmbedding=OpenAIEmbeddings(model="text-embedding-3-large",batch_size=32)
+model_name = 'pinecone-sparse-english-v0'
 embeddings = PineconeEmbeddings(
     model=model_name,
     pinecone_api_key='pcsk_jgLR3_QvZDbNgoPsjNFiNscJtcw8jnnhLSira283uCptMVCPy7DjXqRZ6KnjWYv6H5gDN'
-)
+,batch_size=32,input_type="text")
 pc=Pinecone(api_key='pcsk_jgLR3_QvZDbNgoPsjNFiNscJtcw8jnnhLSira283uCptMVCPy7DjXqRZ6KnjWYv6H5gDN')
 
 spec=ServerlessSpec(cloud='aws',region='us-east-1')
@@ -36,7 +36,7 @@ index_name = "rag-getting-started"
 namespace = "resume-rohith"
 
 if index_name not in pc.list_indexes().names():
-    pc.create_index(name=index_name,dimension=openaiEmbedding.dimension,metric='cosine',
+    pc.create_index(name=index_name,metric='cos',
                     spec=spec)
     while not pc.describe_index(index_name).status['ready']:
         time.sleep(1)
@@ -45,7 +45,8 @@ docsearch = PineconeVectorStore.from_documents(
     documents=chunks,
     index_name=index_name,
     embedding=embeddings,
-    namespace=namespace
+    namespace=namespace,
+    
 )
 time.sleep(10)
 

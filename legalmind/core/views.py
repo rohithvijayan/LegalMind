@@ -9,6 +9,7 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 import json
+import random
 ##User authentication imports
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout
@@ -34,7 +35,7 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 openaiEmbedding=OpenAIEmbeddings(model="text-embedding-ada-002")
 pc=Pinecone(api_key=os.environ.get('PINECONE_API_KEY'))
 spec=ServerlessSpec(cloud='aws',region='us-east-1')
-index_name = "rag-bot-index"
+index_name = "rag-bot-index"+str(random.randint(1,1000))
 namespace = "rag-rohith"
 prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a specialized Indian Legal Expert chatbot designed to provide concise, context-specific responses related to Indian laws, including the Indian Penal Code and other relevant legislations. Use only the provided context to answer questions,context='{context}', and if the context is not sufficient, respond with: 'Sorry, I couldn't find an answer related to the uploaded document.'"),
@@ -49,9 +50,14 @@ load_dotenv()
 def home(request):
     return render(request, 'core/home.html')
 
+def features(request):
+    return render(request, 'core/features.html')
 @login_required
 def ragbot(request):
     return render(request, 'core/ragbot.html')
+@login_required
+def legalbot(request):
+    return render(request,"core/legalbot.html")
 @csrf_exempt
 def login_page(request):
     return render(request, 'core/login.html')
@@ -63,13 +69,15 @@ def register(request):
             data=json.loads(request.body)
             print(data)
             user_name=data.get("username")
+            #if User.objects.get(username=user_name):
+             #   return JsonResponse({"message":"Registration Failed, Username Already Exists"})
             email=data.get("email")
             password=data.get("password")
             re_password=data.get("rePassword")
             print(f"username={user_name} email={email} password={password}  re_password={re_password}")
             if password==re_password:
                 #store the user data in the database
-                user=User.objects.create_user(username=user_name,email=email,password=password)                
+                user=User.objects.create_user(username=user_name,email=email,password=password)              
                 user.save()
                 print(f"user name={user.username}\temailid={user.email}\tpassword={user.password}")
                 #here you can use Django's built-in User model or any other database to store user data
@@ -160,3 +168,5 @@ def embedder(request):
     embeddings=embedding_creator(chunks)
     retrieval_chain=create_rag_chain(embeddings)
     return JsonResponse({"message:":"embedding successfull,retrieval chain returned"})
+
+
