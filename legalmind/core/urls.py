@@ -9,6 +9,7 @@ urlpatterns = [
     path("login",views.login_page,name='login_page'),
     path("features",views.features,name='features'),
     path("api/ragchat/",views.ragchat,name='ragchat'),
+    path("api/legalbot/",views.legalchat,name='legalchat'),
     path("api/uploadFile/",views.fileHandler,name='uploadFile'),
     path("api/process/",views.embedder,name='process'),
     path("api/register/",views.register,name='register'),

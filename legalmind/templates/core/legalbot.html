@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{% static 'css/legalbot.css' %}" type="text/css">
 </head>
 <body>
+    <script defer src="{% static 'js/legalbot.js' %}"></script>
+
     <div class="container">
         <!-- common main Header -->
         <header id="main-header">
@@ -89,19 +91,16 @@
             <section class="chat-window">
                 <div class="chat-messages" id="chat-messages">
                     <div class="message bot">
-                        <div class="bubble">Hello! How can I assist you today?</div>
+                        <div class="bubble" id="botbubble">Hello! How can I assist you today?</div>
                     </div>
-                    <div class="message user">
-                        <div class="bubble">Hi, I need help with something.</div>
-                    </div>
+
                 </div>
                 <div class="chat-input">
                     <input type="text" id="user-input" placeholder="Type your message...">
-                    <button class="send-button" onclick="sendMessage()">➤</button>
+                    <button class="send-button" id="sendBTN" onclick=sendMessage()>➤</button>
                 </div>
             </section>
         </main>
     </div>
-    <script src="{% static 'js/legalbot.js' %}"></script>
 </body>
 </html>

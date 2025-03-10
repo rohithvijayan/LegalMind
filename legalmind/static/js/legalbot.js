@@ -36,3 +36,42 @@ function loadTheme() {
 
 // Load the theme when the page loads
 document.addEventListener('DOMContentLoaded', loadTheme);
+
+// send message as POST
+
+async function sendMessage(){
+    const fd=new FormData();
+    const msgInput=document.getElementById("user-input")
+    const userMessage=msgInput.value
+    msgInput.value=""
+
+    const userDiv=document.createElement("div")
+    userDiv.setAttribute('class','message user')
+    const botDiv=document.createElement('div')
+    botDiv.setAttribute('class','message bot')
+    const userBubble=document.createElement('div')
+    userBubble.setAttribute('class','bubble')
+    userBubble.setAttribute("id","userbubble")
+    userDiv.appendChild(userBubble)
+    botBubble=document.createElement("div")
+    botBubble.setAttribute('class','bubble')
+    botBubble.setAttribute("id","botbubble")
+    userBubble.textContent=userMessage
+    const chatDiv=document.getElementById("chat-messages")
+    chatDiv.appendChild(userDiv)
+    botBubble.textContent="Typing..."
+    botDiv.appendChild(botBubble)
+    chatDiv.appendChild(botDiv)
+    console.log("USER MESSAGE IS : ",userMessage);
+    fd.append("usermessage-legalbot",userMessage)
+    const response=await fetch("http://127.0.0.1:8000/api/legalbot/",{
+        method:"POST",
+        body:fd
+    });
+    const reply=await response.json()
+    const botMessage=reply.botReply
+    botBubble.textContent=botMessage
+    botDiv.appendChild(botBubble)
+    chatDiv.appendChild(botDiv)
+    console.log("reply from bot:",reply.botReply)
+}

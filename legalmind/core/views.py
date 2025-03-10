@@ -321,3 +321,63 @@ def category_documents(request, category_name):
         'category': category_name.replace('_', ' ').title(),
         'documents': documents
     })
+#legal chatbot
+from pinecone import Pinecone
+from pinecone_plugins.assistant.models.chat import Message
+assistant = pc.assistant.Assistant(assistant_name="legalchatbot")
+
+
+def extract_content(api_response):
+  """Extracts content, handling different response structures and None responses."""
+  if api_response is None:
+      print("Error: API Response is None.")
+      return None
+
+  if not isinstance(api_response, dict):
+        print("Error: API Response is not a dictionary.")
+        print("Type of API Response:", type(api_response))
+        return None
+
+  try:
+    if 'message' in api_response:
+      if not isinstance(api_response['message'], dict):
+          print("Error: api_response['message'] is not a dictionary.")
+          print("Type of api_response['message']:", type(api_response['message']))
+          return None
+
+      if 'content' in api_response['message']:
+        if not isinstance(api_response['message']['content'], str):
+            print("Error: api_response['message']['content'] is not a string.")
+            print("Type of api_response['message']['content']:", type(api_response['message']['content']))
+            return None
+        content = api_response['message']['content']
+        return content
+      else:
+        print("Error: 'content' key not found in api_response['message'].")
+        return None
+    else:
+      print("Error: 'message' key not found in api_response.")
+      return None
+  except TypeError as e:
+      print(f"TypeError: {e}")
+      return None
+  except Exception as e:
+      print(f"An unexpected error occurred: {e}")
+      return None
+
+@csrf_exempt
+def legalchat(request):
+    if request.method == 'POST':
+        #data=json.loads(request.body.POST.get("message"))
+        #print(data)
+        user_message=request.POST.get('usermessage-legalbot')
+        print(user_message)
+        msg = Message(content=f"{user_message}")
+        #response=model.generate_content(f'Generate A  concise reply for the following message from user:{user_message}.STRICTLY AVOID USING SYMBOLS IN RESPONSE<MAKE SURE THE RESPONS IS CLEAN RAW FORMATTED TEXT')
+        resp = dict(assistant.chat(messages=[msg]))
+        print(type(resp))
+        content=extract_content(resp)
+        print(content)
+        #print("RESPONSE IS:"+resp)
+        #answer=(resp["message"]["content"])
+        return JsonResponse({"botReply":content})
