@@ -28,6 +28,13 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain import hub
 from langchain_openai.embeddings import OpenAIEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
+###########################################################
+#doc generation
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .forms import WillForm, LicenseForm, LoanAgreementForm, DeedOfHypothecationForm, BailBondForm, ContractBondForm, SimpleMoneyBondForm, EmployeeBondForm, MortgageDeedForm, RentAgreementForm, SaleAgreementForm, BailPetitionForm, DeedOfAdoptionForm, LeaveAndLicenseAgreementForm
+import docx
+from django.shortcuts import render
 ################################################################
 genai.configure(api_key=os.environ.get('GOOGLE_API_KEY'))
 OPENAI_API_KEY=os.environ.get("OPENAI_API_KEY") 
@@ -170,3 +177,147 @@ def embedder(request):
     return JsonResponse({"message:":"embedding successfull,retrieval chain returned"})
 
 
+def select_document(request):
+    return render(request, 'core/select_document.html')
+
+def generate_document(request, doc_type):
+    if doc_type not in TEMPLATES:
+        return redirect('select_document')
+    
+    FormClass = FORMS[doc_type]
+    
+    if request.method == 'POST':
+        form = FormClass(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            template_path = TEMPLATES.get(doc_type)
+            doc = docx.Document(template_path)
+            for para in doc.paragraphs:
+                for key, value in data.items():
+                    if value:
+                        para.text = para.text.replace(f'{{{{{key}}}}}', str(value))
+            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+            response['Content-Disposition'] = f'attachment; filename=generated_{doc_type}.docx'
+            doc.save(response)
+            return response
+    else:
+        form = FormClass()
+    return render(request, 'core/generate_document.html', {'form': form, 'doc_type': doc_type})
+
+
+# Define document categories and their corresponding documents
+TEMPLATES = {
+    'will': 'Simple-will-LawRato3.docx',
+    'license': 'Licence-to-use-Copyright-LawRato2.docx',
+    'loan_agreement': 'Loan-Agreement-LawRato3.docx',
+    'deed_of_hypothecation': 'Deed-of-Hypothecation-HP-LawRato4.docx',
+    'bail_bond': 'Bond-and-Bail-bond-under-CrPC-1973-after-Arrest-under-a-Warrant-LawRato.docx',
+    'contract_bond': 'Bond-to-Secure-the-Performance-of-a-Contract-LawRato2.docx',
+    'simple_money_bond': 'Simple-Money-Bond-LawRato2.docx',
+    'employee_bond_for_non_compete': 'Employee-Bond-for-Non-Compete-LawRato3.docx',
+    'simple_mortgage_deed': 'Simple-Mortgage-Deed-LawRato2.docx',
+    'rent_agreement': 'Lease-Deed-(for-a-term-of-years)-Rent-Agreement-LawRato3.docx',
+    'sale_agreement': 'Agreement-for-Sale-LawRato4.docx',
+    'bail_petition' : 'Anticipatory-Bail-Petition-Format-LawRato.docx',
+    'deed_of_adoption': 'Deed-of-Adoption-LawRato2.docx',
+    'leave_and_license_agreement': 'Leave-and-License-Agreement-LawRato2.docx',
+
+}
+
+FORMS = {
+    'will': WillForm,
+    'license': LicenseForm,
+    'loan_agreement': LoanAgreementForm,
+    'deed_of_hypothecation' : DeedOfHypothecationForm,
+    'bail_bond': BailBondForm,
+    'contract_bond': ContractBondForm,
+    'simple_money_bond': SimpleMoneyBondForm,
+    'employee_bond_for_non_compete': EmployeeBondForm,
+    'simple_mortgage_deed' : MortgageDeedForm,
+    'rent_agreement' : RentAgreementForm,
+    'sale_agreement' : SaleAgreementForm,
+    'bail_petition' : BailPetitionForm,
+    'deed_of_adoption' : DeedOfAdoptionForm,
+    'leave_and_license_agreement': LeaveAndLicenseAgreementForm,
+
+}
+
+def select_document(request):
+    return render(request, 'core/select_document.html')
+
+def generate_document(request, doc_type):
+    if doc_type not in TEMPLATES:
+        return redirect('select_document')
+    
+    FormClass = FORMS[doc_type]
+    
+    if request.method == 'POST':
+        form = FormClass(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            template_path = TEMPLATES.get(doc_type)
+            doc = docx.Document(template_path)
+            for para in doc.paragraphs:
+                for key, value in data.items():
+                    if value:
+                        para.text = para.text.replace(f'{{{{{key}}}}}', str(value))
+            response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+            response['Content-Disposition'] = f'attachment; filename=generated_{doc_type}.docx'
+            doc.save(response)
+            return response
+    else:
+        form = FormClass()
+    return render(request, 'core/generate_document.html', {'form': form, 'doc_type': doc_type})
+
+
+# Define document categories and their corresponding documents
+CATEGORY_DOCUMENTS = {
+    'will': {
+        'Simple Will': '/will/',
+    },
+    'banking': {
+        'Loan Agreement': '/loan_agreement/',
+        'Deed Of Hypothecation' : '/deed_of_hypothecation/',
+
+    },
+    'bonds': {
+        'Bail Bond': '/bail_bond/',
+        'Bond to Secure Performance of a Contract': '/contract_bond/',
+        'Employee Bond for Non-Compete': '/employee_bond_for_non_compete/',
+        'Simple Money Bond': '/simple_money_bond/',
+    },
+    'contracts': {
+        'Rent Agreement (for a term of years)': '/rent_agreement/',
+        'Simple Mortgage Deed': '/simple_mortgage_deed/',
+        'Leave and License Agreement': '/leave_and_license_agreement/',
+
+    },
+    'corporate': {
+        'Agreement for Sale': '/sale_agreement/',
+    },
+    'criminal': {
+        'Anticipatory Bail Petition Form' : '/bail_petition/',
+
+    },
+    'divorceandfamilylaw' : {
+        'Deed Of Adoption' : '/deed_of_adoption/',
+
+    },
+    'trademarkandcopyright' : {
+        'License to use Copyright' : '/license/',
+
+    },
+
+}
+
+def category_documents(request, category_name):
+    """View to display documents for a selected category."""
+    documents = CATEGORY_DOCUMENTS.get(category_name, {})
+    
+    if not documents:
+        return render(request, 'core/404.html', {"message": "Category not found"})
+    
+    return render(request, 'core/category_documents.html', {
+        'category': category_name.replace('_', ' ').title(),
+        'documents': documents
+    })

@@ -14,4 +14,8 @@ urlpatterns = [
     path("api/register/",views.register,name='register'),
     path("api/signin/",views.signin,name='signin'),
     path("logout",views.signout,name='logout'),
+    path('docgen', views.select_document, name='select_document'),
+    path('<str:doc_type>/', views.generate_document, name='generate_document'),
+    path('categories/<str:category_name>/', views.category_documents, name='category_documents'),
+
 ]

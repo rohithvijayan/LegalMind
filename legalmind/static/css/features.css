@@ -66,7 +66,7 @@ color: white;}
 .signup :hover{background-color: #533ccf;}
 #logout:hover{background-color: #6558d3;color: #fff;}
 /********CONTAINER****************/
-.container{display: flex;flex-direction: column;width: 100%;height: 100%;  background-color:#ebebf8}
+.container{display: flex;flex-direction: column;width: 100%;height: 100vh;  background-color:#ebebf8}
 /********************************/
 .hero {
   display: flex;
@@ -134,10 +134,10 @@ color: white;}
 }
 /****feature card*/
 .features{width: 100%;display: flex;flex-direction: column;gap: 10px;}
-.feature{padding-left: 50px;
+.feature{padding-left: 0px;
 background-color: #ebebf8;padding: 20px;border:thistle  black;}
 .title{text-align: center;}
-.title h2{font-size: 5vh;font-family: 900;color: #3926e2;}
+.title h2{font-size: 5vh;font-family: 900;color: #6358c7;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
 .plan {
   border-radius: 16px;
   box-shadow: 0 30px 30px -25px rgba(0, 38, 255, 0.205);
@@ -255,3 +255,4 @@ background-color: #ebebf8;padding: 20px;border:thistle  black;}
 .plan .button:hover, .plan .button:focus {
   background-color: #4133B7;
 }
+.feature-cards{display: flex;flex-direction: row;justify-content: space-evenly;}
