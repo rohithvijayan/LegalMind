@@ -1,194 +1,516 @@
-{% load  static %}
+{% load static %}
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/features.css' %}">
-    </head>
-    <body>
-|   <div class="container">
-        <header>
-            <div class="logo">
-                <span>
-                    <svg width="50px" height="50px" viewBox="0 0 1024 1024" class="icon"  version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M945.4 554l0.1-0.1c0.4-0.5 0.7-1 1-1.5 0-0.1 0.1-0.1 0.1-0.2 0.3-0.5 0.6-1 0.9-1.6 1.2-2.2 2-4.6 2.5-7.2v-0.1c0.1-0.6 0.2-1.2 0.2-1.8v-0.1c0-0.6 0.1-1.1 0.1-1.7v-0.3-0.2c0-0.5 0-1-0.1-1.5v-0.2c-0.2-2.8-0.9-5.5-2-8L800.7 175.1c-3.8-9.1-12.7-15-22.6-15h-0.1c-0.8 0-1.6 0.1-2.4 0.1-2.3-0.7-4.8-1.1-7.3-1.1H260.8c-3.1 0-6.1 0.6-8.9 1.6-1.8-0.4-3.7-0.7-5.6-0.7h-0.1c-9.9 0-18.8 5.9-22.7 14.9L73.6 529.7c-0.6 1.3-1 2.6-1.3 4v0.1c-0.3 1.2-0.5 2.4-0.6 3.6v0.3c0 0.5-0.1 1-0.1 1.6v0.4c0 0.5 0 1.1 0.1 1.6v0.2c0.1 0.6 0.1 1.2 0.2 1.8 0.4 2.6 1.3 5 2.5 7.2 0.3 0.5 0.6 1.1 0.9 1.6 0 0.1 0.1 0.1 0.1 0.2 0.3 0.5 0.7 1 1 1.5 0 0 0 0.1 0.1 0.1 0.3 0.5 0.7 0.9 1.1 1.3l0.2 0.2c0.4 0.4 0.8 0.9 1.2 1.3l0.2 0.2c0.4 0.4 0.9 0.8 1.4 1.2l148.9 119.2c4.5 3.6 10 5.4 15.4 5.4 5.5 0 10.9-1.8 15.4-5.4l148.9-119.2c0.5-0.4 0.9-0.8 1.4-1.2l0.2-0.2 1.2-1.2c0.1-0.1 0.1-0.2 0.2-0.2 0.4-0.4 0.7-0.8 1-1.2 0-0.1 0.1-0.1 0.1-0.2 0.3-0.5 0.7-0.9 1-1.4 0.1-0.1 0.1-0.2 0.2-0.3l0.9-1.5s0-0.1 0.1-0.1c0.6-1.1 1.1-2.2 1.5-3.4v-0.1c0.4-1.2 0.7-2.3 0.9-3.6v-0.2c0.1-0.6 0.2-1.2 0.2-1.8v-0.2c0-0.5 0.1-1 0.1-1.5v-0.4-0.2c0-0.5 0-1-0.1-1.5v-0.3c0-0.6-0.1-1.1-0.2-1.7-0.1-0.6-0.2-1.3-0.4-1.9v-0.1c-0.3-1.4-0.8-2.9-1.4-4.2L282.5 207.7h207.4v606.5H319.3c-13.6 0-24.6 10.9-24.6 24.3s11 24.3 24.6 24.3h390.3c13.6 0 24.6-10.9 24.6-24.3s-11-24.3-24.6-24.3H539V207.7h202.4l-136.1 322c-0.6 1.3-1 2.6-1.3 4v0.1c-0.3 1.2-0.5 2.4-0.6 3.6v0.3c0 0.5-0.1 1-0.1 1.6v0.4c0 0.6 0 1.1 0.1 1.6v0.2c0.1 0.6 0.1 1.2 0.2 1.8 0.4 2.6 1.3 5 2.5 7.2 0.3 0.5 0.6 1.1 0.9 1.6 0 0.1 0.1 0.1 0.1 0.2 0.3 0.5 0.7 1 1 1.5v0.1c0.4 0.5 0.7 0.9 1.1 1.4l0.2 0.2c0.4 0.4 0.8 0.9 1.3 1.3l0.2 0.2c0.5 0.4 0.9 0.8 1.4 1.2l148.9 119.2c4.5 3.6 10 5.4 15.4 5.4 5.5 0 10.9-1.8 15.4-5.4l148.9-119.2c0.5-0.4 1-0.8 1.4-1.2l0.2-0.2c0.4-0.4 0.8-0.8 1.2-1.3l0.2-0.2c0.8-0.4 1.1-0.8 1.5-1.3z m-56.3-39H664.8l112.9-267.2L889.1 515zM246 247.8L357.4 515H133.1L246 247.8z m-0.9 379.4l-79.5-63.6h159l-79.5 63.6z m531.8 0l-79.5-63.6h159l-79.5 63.6z" fill="#5F9BEB" /></svg>
-                </span>
-                
-                <span><a href="{% url 'home' %}" style="text-decoration: none;"><h3 id="logo-brand" >LegalMind</h3></a></span>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="buttons" id="buttons" style="display: flex;flex-direction: row;justify-content: space-between;gap: 2vh;text-align: center;align-items: center;text-transform: capitalize;">
-                {% if user.is_authenticated %}
-                <h3>{{user.username}}</h3>
-                <form action="{% url 'logout' %}" method="POST">
-                    {% csrf_token %}
-                    <button id="logout" type="submit" style="padding: 10px 20px;
-                    border-radius: 5px;
-                    font-weight: 500;
-                    transition: background-color 0.3s ease;background-color: white;
-                    border: 1px solid #6a4df9;
-                    color: #6a4df9;">Log Out</button>
-                </form>
-                {% else %}
-                <a href="{% url 'login_page' %}" class="login">Log in</a>
-                <a href="{% url 'signup_page' %}" class="signup">Sign up</a>
-                {% endif %}
-            </div>
-        </header>
+<head>
+    <title>Features - LegalMind</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f9f9ff 0%, #ebebf8 100%);
+            color: #333;
+            min-height: 100vh;
+        }
         
-        <div class="features">
-            <div class="title">
-               <h2>Legal Mind Features</h2> 
-            </div><br>
-            <div class="feature-cards">
-                <div class="feature">
-                    <div class="plan">
-                        <div class="inner">
-                        
-                            <h3 class="title">Automated Document Drafting</h3>
-                            <p class="info">"Effortlessly draft accurate legal documents with AI-powered automation."</p>
-                            <ul class="features">
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span><strong>Time-Saving Efficiency</strong> </span>
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span> <strong>Error Reduction</strong></span>
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span><strong>Versatility</strong></span>
-                                </li>
-                            </ul>
-                            <div class="action">
-                            <a class="button" href="#">
-                                Draft Documents Now!
-                            </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feature-text"></div>
-                </div><br>
-                <div class="feature">
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-                    <div class="plan">
-                        <div class="inner">
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #logo-brand {
+            color: #5F9BEB;
+            font-weight: bolder;
+            font-size: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: #6a4df9;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .login, .signup, #logout {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .login {
+            background-color: white;
+            border: 1px solid #6a4df9;
+            color: #6a4df9;
+        }
+
+        .signup {
+            background-color: #6a4df9;
+            color: white;
+        }
+
+        .features-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(106, 77, 249, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(#6a4df9 1px, transparent 1px),
+                linear-gradient(90deg, #6a4df9 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.03;
+            transform: rotate(5deg);
+            pointer-events: none;
+        }
+
+        .features-hero h1 {
+            color: #6a4df9;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .features-hero p {
+            color: #555;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-content {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-icon {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(106, 77, 249, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-title {
+            color: #6a4df9;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 77, 249, 0.1);
+        }
+
+        .benefit-title {
+            color: #5F9BEB;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefit-icon {
+            margin-right: 0.5rem;
+        }
+
+        .benefit-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(106, 77, 249, 0.7) 0%, rgba(95, 155, 235, 0.7) 100%);
+            color: white;
+            margin-top: 50px;
+            border-radius: 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #6a4df9;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #666;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+            }
+            nav ul {
+                margin: 20px 0;
+            }
+            .buttons {
+                margin-top: 10px;
+            }
+            .features-hero h1 {
+                font-size: 2.2rem;
+            }
+            .feature-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Decorative elements */
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #6a4df9, #5F9BEB);
+        }
+
+        .feature-number {
+            position: absolute;
+            right: 30px;
+            top: 30px;
+            font-size: 5rem;
+            font-weight: bold;
+            color: rgba(106, 77, 249, 0.05);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg width="50px" height="50px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M945.4 554l0.1-0.1c0.4-0.5 0.7-1 1-1.5 0-0.1 0.1-0.1 0.1-0.2 0.3-0.5 0.6-1 0.9-1.6 1.2-2.2 2-4.6 2.5-7.2v-0.1c0.1-0.6 0.2-1.2 0.2-1.8v-0.1c0-0.6 0.1-1.1 0.1-1.7v-0.3-0.2c0-0.5 0-1-0.1-1.5v-0.2c-0.2-2.8-0.9-5.5-2-8L800.7 175.1c-3.8-9.1-12.7-15-22.6-15h-0.1c-0.8 0-1.6 0.1-2.4 0.1-2.3-0.7-4.8-1.1-7.3-1.1H260.8c-3.1 0-6.1 0.6-8.9 1.6-1.8-0.4-3.7-0.7-5.6-0.7h-0.1c-9.9 0-18.8 5.9-22.7 14.9L73.6 529.7c-0.6 1.3-1 2.6-1.3 4v0.1c-0.3 1.2-0.5 2.4-0.6 3.6v0.3c0 0.5-0.1 1-0.1 1.6v0.4c0 0.5 0 1.1 0.1 1.6v0.2c0.1 0.6 0.1 1.2 0.2 1.8 0.4 2.6 1.3 5 2.5 7.2 0.3 0.5 0.6 1.1 0.9 1.6 0 0.1 0.1 0.1 0.1 0.2 0.3 0.5 0.7 1 1 1.5 0 0 0 0.1 0.1 0.1 0.3 0.5 0.7 0.9 1.1 1.3l0.2 0.2c0.4 0.4 0.8 0.9 1.2 1.3l0.2 0.2c0.4 0.4 0.9 0.8 1.4 1.2l148.9 119.2c4.5 3.6 10 5.4 15.4 5.4 5.5 0 10.9-1.8 15.4-5.4l148.9-119.2c0.5-0.4 0.9-0.8 1.4-1.2l0.2-0.2 1.2-1.2c0.1-0.1 0.1-0.2 0.2-0.2 0.4-0.4 0.7-0.8 1-1.2 0-0.1 0.1-0.1 0.1-0.2 0.3-0.5 0.7-0.9 1-1.4 0.1-0.1 0.1-0.2 0.2-0.3l0.9-1.5s0-0.1 0.1-0.1c0.6-1.1 1.1-2.2 1.5-3.4v-0.1c0.4-1.2 0.7-2.3 0.9-3.6v-0.2c0.1-0.6 0.2-1.2 0.2-1.8v-0.2c0-0.5 0.1-1 0.1-1.5v-0.4-0.2c0-0.5 0-1-0.1-1.5v-0.3c0-0.6-0.1-1.1-0.2-1.7-0.1-0.6-0.2-1.3-0.4-1.9v-0.1c-0.3-1.4-0.8-2.9-1.4-4.2L282.5 207.7h207.4v606.5H319.3c-13.6 0-24.6 10.9-24.6 24.3s11 24.3 24.6 24.3h390.3c13.6 0 24.6-10.9 24.6-24.3s-11-24.3-24.6-24.3H539V207.7h202.4l-136.1 322c-0.6 1.3-1 2.6-1.3 4v0.1c-0.3 1.2-0.5 2.4-0.6 3.6v0.3c0 0.5-0.1 1-0.1 1.6v0.4c0 0.6 0 1.1 0.1 1.6v0.2c0.1 0.6 0.1 1.2 0.2 1.8 0.4 2.6 1.3 5 2.5 7.2 0.3 0.5 0.6 1.1 0.9 1.6 0 0.1 0.1 0.1 0.1 0.2 0.3 0.5 0.7 1 1 1.5v0.1c0.4 0.5 0.7 0.9 1.1 1.4l0.2 0.2c0.4 0.4 0.8 0.9 1.3 1.3l0.2 0.2c0.5 0.4 0.9 0.8 1.4 1.2l148.9 119.2c4.5 3.6 10 5.4 15.4 5.4 5.5 0 10.9-1.8 15.4-5.4l148.9-119.2c0.5-0.4 1-0.8 1.4-1.2l0.2-0.2c0.4-0.4 0.8-0.8 1.2-1.3l0.2-0.2c0.8-0.4 1.1-0.8 1.5-1.3z m-56.3-39H664.8l112.9-267.2L889.1 515zM246 247.8L357.4 515H133.1L246 247.8z m-0.9 379.4l-79.5-63.6h159l-79.5 63.6z m531.8 0l-79.5-63.6h159l-79.5 63.6z" fill="#5F9BEB"/></svg>
+            <span><a href="{% url 'home' %}" style="text-decoration: none;"><h3 id="logo-brand">LegalMind</h3></a></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'features' %}">Features</a></li>
+      
+            </ul>
+        </nav>
+        <div class="buttons">
+            {% if user.is_authenticated %}
+            <h3>{{user.username}}</h3>
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button id="logout" type="submit">Log Out</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login_page' %}" class="login">Log in</a>
+            <a href="{% url 'signup_page' %}" class="signup">Sign up</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="features-hero">
+        <h1>Our Features</h1>
+        <p>Discover how LegalMind combines cutting-edge AI technology with legal expertise to simplify your legal document experience.</p>
+    </div>
+
+    <div class="features-container">
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <div class="feature-content">
+                    <div class="feature-icon">
+                        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 7L12 2L2 7V17L12 22L22 17V7Z" stroke="#6a4df9" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M12 13V22" stroke="#6a4df9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 10.5L7 10.5" stroke="#6a4df9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 7L12 12L22 7" stroke="#6a4df9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h2 class="feature-title">Automated Document Drafting</h2>
+                    <p class="feature-description">Effortlessly draft accurate legal documents with AI-powered automation. No more struggling with complex legal templates or worrying about missing critical clauses. Our smart system handles the heavy lifting.</p>
+                    
+                    <div class="feature-benefits">
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#5F9BEB" stroke-width="2"/>
+                                        <path d="M12 6V12L16 14" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                                Time-Saving Efficiency
+                            </h3>
+                            <p class="benefit-description">Create complex legal documents in minutes instead of hours. Our AI handles the formatting and structure so you can focus on what matters.</p>
+                        </div>
                         
-                            <h3 class="title">Automated Document Drafting</h3>
-                            <p class="info">"Effortlessly draft accurate legal documents with AI-powered automation."</p>
-                            <ul class="features">
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span><strong>Time-Saving Efficiency</strong> </span>
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span> <strong>Error Reduction</strong></span>
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span><strong>Versatility</strong></span>
-                                </li>
-                            </ul>
-                            <div class="action">
-                            <a class="button" href="#">
-                                Draft Documents Now!
-                            </a>
-                            </div>
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#5F9BEB" stroke-width="2"/>
+                                        <path d="M7.5 12L10.5 15L16.5 9" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                Error Reduction
+                            </h3>
+                            <p class="benefit-description">Minimize human errors with AI-powered validation and verification that ensures accuracy in every document you create.</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M9 9H9.01" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M15 9H15.01" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M17 17L22 22" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M17 22L22 17" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                                Versatility
+                            </h3>
+                            <p class="benefit-description">Support for a wide range of legal document types across multiple practice areas, from contracts to wills and beyond.</p>
                         </div>
                     </div>
-                    <div class="feature-text"></div>
-                </div><br>
-                <div class="feature">
-                    <div class="plan">
-                        <div class="inner">
-                        
-                            <h3 class="title">Automated Document Drafting</h3>
-                            <p class="info">"Effortlessly draft accurate legal documents with AI-powered automation."</p>
-                            <ul class="features">
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span><strong>Time-Saving Efficiency</strong> </span>
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span> <strong>Error Reduction</strong></span>
-                                </li>
-                                <li>
-                                    <span class="icon">
-                                        <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 0h24v24H0z" fill="none"></path>
-                                            <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
-                                        </svg>
-                                    </span>
-                                    <span><strong>Versatility</strong></span>
-                                </li>
-                            </ul>
-                            <div class="action">
-                            <a class="button" href="#">
-                                Draft Documents Now!
-                            </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="feature-text"></div>
                 </div>
             </div>
-                
-        </div>  
-           
-    </div>
-    </body>
-</html>
+            
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <div class="feature-content">
+                    <div class="feature-icon">
+                        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="#6a4df9" stroke-width="2"/>
+                            <path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z" stroke="#6a4df9" stroke-width="2"/>
+                            <path d="M17.5 6.5H17.51" stroke="#6a4df9" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 12H12.01" stroke="#6a4df9" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h2 class="feature-title">AI Lawyer ChatBot</h2>
+                    <p class="feature-description">Your virtual legal advisor, providing instant, accurate, and accessible legal assistance 24/7. Ask questions in plain language and get expert-level answers without the legal jargon.</p>
+                    
+                    <div class="feature-benefits">
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#5F9BEB" stroke-width="2"/>
+                                        <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 17H12.01" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                Expert Legal Insights
+                            </h3>
+                            <p class="benefit-description">Access legal knowledge across multiple practice areas with AI trained on comprehensive legal data and precedents.</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 10H16" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8 14H16" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9 18H15" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3 6H3.01" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <rect x="3" y="2" width="18" height="20" rx="2" stroke="#5F9BEB" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                Simplified Legal Jargon
+                            </h3>
+                            <p class="benefit-description">Get complex legal concepts explained in plain, easy-to-understand language that makes sense to you.</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#5F9BEB" stroke-width="2"/>
+                                        <path d="M12 8V16" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M8 12H16" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                                Always Available & Free!
+                            </h3>
+                            <p class="benefit-description">Get legal assistance anytime, day or night, without hourly fees or scheduling appointments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <div class="feature-content">
+                    <div class="feature-icon">
+                        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="#6a4df9" stroke-width="2"/>
+                            <path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z" stroke="#6a4df9" stroke-width="2"/>
+                            <path d="M17.5 6.5H17.51" stroke="#6a4df9" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 12H12.01" stroke="#6a4df9" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h2 class="feature-title">Chat With Your Legal Documents</h2>
+                    <p class="feature-description">Get instant, accurate answers from your legal documents using AI-powered RAG technology.</p>
+                    
+                    <div class="feature-benefits">
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#5F9BEB" stroke-width="2"/>
+                                        <path d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15849 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 17H12.01" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                Enhanced Search
+                            </h3>
+                            <p class="benefit-description">AI-driven semantic search instantly surfaces relevant statutes, cases, and regulations, even with ambiguous queries.</p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 10H16" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8 14H16" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9 18H15" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3 6H3.01" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <rect x="3" y="2" width="18" height="20" rx="2" stroke="#5F9BEB" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                Reliable Context
+                            </h3>
+                            <p class="benefit-description">Answers are anchored in verified, up-to-date legal sources, minimizing errors and ensuring compliance.
+
+                            </p>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <h3 class="benefit-title">
+                                <span class="benefit-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#5F9BEB" stroke-width="2"/>
+                                        <path d="M12 8V16" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M8 12H16" stroke="#5F9BEB" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                                AI-Powered Insights
+                            </h3>
+                            <p class="benefit-description">Identifies patterns, risks, and strategic recommendations from legal data to inform case strategies.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>

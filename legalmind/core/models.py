@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class LegalDocument(models.Model):
     DOCUMENT_CHOICES = [
@@ -15,6 +16,19 @@ class LegalDocument(models.Model):
         ('anticipatory_bail_petition_format', 'Anticipatory Bail Petition Format'),
         ('deed_of_adoption', 'Deed Of Adoption'),
         ('leave_and_license_agreement', 'Leave and License Agreement'),
+        ('partnership_deed', 'Partnership Deed'),
+        ('deed_of_gift_of_immovable_property', 'Deed of Gift of Immovable Property'),
+        ('memorandum_recording_family_settlement', 'Memorandum Recording Family Settlement'),
+        ('partition_deed', 'Partition Deed'),
+        ('separation_agreement', 'Separation Agreement'),
+        ('general_power_of_attorney', 'Power Of Attorney'),
+        ('irrevocable_power_of_attorney', 'Irrevocable Power Of Attorney'),
+        ('revocation_of_the_power_of_attorney', 'Revocation Of The Power Of Attorney'),
+        ('sample gift deed', 'Sample Gift Deed'),
+        ('agreement license between trademark owner and manufacturer', 'Agreement License Between Trademark Owner And Manufacturer'),
+        ('affidavit and indemnity', 'Affidavit And Indemnity'),
+        ('agreement between independent contractor and service provider', 'Agreement Between Independent Contractor And Service Provider'),
+        ('nda', 'NDA'),
 
     ]
     document_type = models.CharField(max_length=255, choices=DOCUMENT_CHOICES)
@@ -28,7 +42,7 @@ class LegalDocument(models.Model):
     child_name_2 = models.CharField(max_length=255, blank=True, null=True)
     flat_no = models.CharField(max_length=50, blank=True, null=True)
     flat_address = models.TextField(blank=True, null=True)
-    date = models.CharField(max_length=50)
+    date = models.DateField(("Date"), default=datetime.date.today)
     month = models.CharField(max_length=50, blank=True, null=True)
     year = models.CharField(max_length=50, blank=True, null=True)
     time = models.CharField(max_length=50, blank=True, null=True)
@@ -215,5 +229,188 @@ class LegalDocument(models.Model):
     rent_per_square_foot = models.FloatField(blank=True, null=True)
     rent_due_day = models.CharField(max_length=255, blank=True, null=True)
     
+    #partnership agreement deed 
+    partner_1_name = models.CharField(max_length=255, blank=True, null=True)
+    partner_1_age = models.IntegerField(blank=True, null=True)
+    partner_1_father_name = models.CharField(max_length=255, blank=True, null=True)
+    partner_1_address = models.CharField(max_length=255, blank=True, null=True)
+    partner_2_name = models.CharField(max_length=255, blank=True, null=True)
+    partner_2_age = models.IntegerField(blank=True, null=True)
+    partner_2_father_name = models.CharField(max_length=255, blank=True, null=True)
+    partner_2_address = models.CharField(max_length=255, blank=True, null=True)
+    partner_3_name = models.CharField(max_length=255, blank=True, null=True)
+    partner_3_age = models.IntegerField(blank=True, null=True)
+    partner_3_father_name = models.CharField(max_length=255, blank=True, null=True)
+    partner_3_address = models.CharField(max_length=255, blank=True, null=True)
+    partner_4_name = models.CharField(max_length=255, blank=True, null=True)
+    partner_4_age = models.IntegerField(blank=True, null=True)
+    partner_4_father_name = models.CharField(max_length=255, blank=True, null=True)
+    partner_4_address = models.CharField(max_length=255, blank=True, null=True)
+    purpose_of_business = models.CharField(max_length=255, blank=True, null=True)
+    business_name = models.CharField(max_length=255, blank=True, null=True)
+    business_address = models.CharField(max_length=255, blank=True, null=True)
+    previous_partnership_deed_date = models.CharField(max_length=255, blank=True, null=True)
+    capital_investment_date = models.CharField(max_length=255, blank=True, null=True)
+    working_partner_1 = models.CharField(max_length=255, blank=True, null=True)
+    working_partner_2 = models.CharField(max_length=255, blank=True, null=True)
+    working_partner_3 = models.CharField(max_length=255, blank=True, null=True)
+    remuneration_percentage_1 = models.CharField(max_length=255, blank=True, null=True)
+    remuneration_percentage_2 = models.CharField(max_length=255, blank=True, null=True)
+    remuneration_percentage_3 = models.CharField(max_length=255, blank=True, null=True)
+    partner_1_share_of_profit = models.CharField(max_length=255, blank=True, null=True)
+    partner_2_share_of_profit = models.CharField(max_length=255, blank=True, null=True)
+    partner_3_share_of_profit = models.CharField(max_length=255, blank=True, null=True)
+    partner_4_share_of_profit = models.CharField(max_length=255, blank=True, null=True)
+    sleeping_partner_names = models.CharField(max_length=255, blank=True, null=True)
 
-       
+    #deed of gift of immoveable property
+    donor_name = models.CharField(max_length=255, blank=True, null=True)
+    donor_address = models.CharField(max_length=255, blank=True, null=True)
+    donee_name = models.CharField(max_length=255, blank=True, null=True)
+    donee_address = models.CharField(max_length=255, blank=True, null=True)
+    donor_relationship_to_donee = models.CharField(max_length=255, blank=True, null=True)
+    property_market_value = models.CharField(max_length=255, blank=True, null=True)
+    
+    #memorandum recording family settlement
+    party_1_name = models.CharField(max_length=255, blank=True, null=True)
+    party_1_address = models.CharField(max_length=255, blank=True, null=True)
+    party_2_name = models.CharField(max_length=255, blank=True, null=True)
+    party_2_address = models.CharField(max_length=255, blank=True, null=True)
+    party_3_name = models.CharField(max_length=255, blank=True, null=True)
+    party_3_address = models.CharField(max_length=255, blank=True, null=True)
+    relationship_between_party_1_and_party_2 = models.CharField(max_length=255, blank=True, null=True)
+    dispute_subject = models.CharField(max_length=255, blank=True, null=True)
+    deceased_person_name = models.CharField(max_length=255, blank=True, null=True)
+    liabilities_amount = models.FloatField(blank=True, null=True)
+    expenses_amount = models.FloatField(blank=True, null=True)
+    bank_name = models.CharField(max_length=255, blank=True, null=True)
+    execution_date = models.CharField(max_length=255, blank=True, null=True)
+    
+    #partition deed
+    first_party_name = models.CharField(max_length=255, blank=True, null=True)
+    first_party_father_name = models.CharField(max_length=255, blank=True, null=True)
+    first_party_address = models.CharField(max_length=255, blank=True, null=True)
+    second_party_name = models.CharField(max_length=255, blank=True, null=True)
+    second_party_father_name =models.CharField(max_length=255, blank=True, null=True)
+    second_party_address = models.CharField(max_length=255, blank=True, null=True)
+    third_party_name = models.CharField(max_length=255, blank=True, null=True)
+    third_party_father_name = models.CharField(max_length=255, blank=True, null=True)
+    third_party_address = models.CharField(max_length=255, blank=True, null=True)
+    karta_name = models.CharField(max_length=255, blank=True, null=True)
+    family_name = models.CharField(max_length=255, blank=True, null=True)
+    other_member_name = models.CharField(max_length=255, blank=True, null=True)
+    phone_number_1 = models.CharField(max_length=255, blank=True, null=True)
+    phone_number_2 = models.CharField(max_length=255, blank=True, null=True)
+    shares_count_1 = models.CharField(max_length=255, blank=True, null=True)
+    company_name_1 = models.CharField(max_length=255, blank=True, null=True)
+    bank_balance_1 = models.FloatField(blank=True, null=True)
+    bank_name_1 = models.CharField(max_length=255, blank=True, null=True)
+    branch_name_1 = models.CharField(max_length=255, blank=True, null=True)
+    date_of_agreement = models.CharField(max_length=255, blank=True, null=True)
+    shares_value_1 = models.CharField(max_length=255, blank=True, null=True)
+    company_name_2 = models.CharField(max_length=255, blank=True, null=True)
+    shares_value_2 = models.CharField(max_length=255, blank=True, null=True)
+    total_value = models.FloatField(blank=True, null=True)
+    recipient_name = models.CharField(max_length=255, blank=True, null=True)
+    net_capital_of_family = models.FloatField(blank=True, null=True)
+    bank_balance_2 = models.FloatField(blank=True, null=True)
+    donated_amount = models.FloatField(blank=True, null=True)
+    partition_date = models.CharField(max_length=255, blank=True, null=True)
+    charitable_trust_name = models.CharField(max_length=255, blank=True, null=True)
+    allocated_phone_number = models.CharField(max_length=255, blank=True, null=True)
+
+    #separation agreement
+    city = models.CharField(max_length=255, blank=True, null=True)
+    husband_name = models.CharField(max_length=255, blank=True, null=True)
+    husband_father_name = models.CharField(max_length=255, blank=True, null=True)
+    husband_residence_address = models.CharField(max_length=255, blank=True, null=True)
+    wife_name = models.CharField(max_length=255, blank=True, null=True)
+    maintenance_amount_from_husband = models.FloatField(blank=True, null=True)
+    first_child_name = models.CharField(max_length=255, blank=True, null=True)
+    first_child_age = models.IntegerField(blank=True, null=True)
+    second_child_name = models.CharField(max_length=255, blank=True, null=True)
+    second_child_age = models.IntegerField(blank=True, null=True)
+    husband_visiting_time_start = models.CharField(max_length=255, blank=True, null=True)
+    husband_visiting_time_end = models.CharField(max_length=255, blank=True, null=True)
+    
+    #power of attorney
+    principal_name = models.CharField(max_length=255, blank=True, null=True)
+    principal_address = models.CharField(max_length=255, blank=True, null=True)
+    attorney_name = models.CharField(max_length=255, blank=True, null=True)
+    attorney_address = models.CharField(max_length=255, blank=True, null=True)
+    witness_name = models.CharField(max_length=255, blank=True, null=True)
+
+    #irrevocable power of attorney
+    company_name = models.CharField(max_length=255, blank=True, null=True)
+    company_registered_office = models.CharField(max_length=255, blank=True, null=True)
+    authorized_person_name = models.CharField(max_length=255, blank=True, null=True)
+    principal_place_of_business = models.CharField(max_length=255, blank=True, null=True)
+    partner_name = models.CharField(max_length=255, blank=True, null=True)
+    loan_amount = models.FloatField(blank=True, null=True)
+    loan_amount_in_words = models.CharField(max_length=255, blank=True, null=True)
+    signatory_name = models.CharField(max_length=255, blank=True, null=True)
+    
+    #revocation_of_the_power_of_attorney
+    attorney_father_name = models.CharField(max_length=255, blank=True, null=True)
+    power_of_attorney_date = models.CharField(max_length=255, blank=True, null=True)
+    
+    #gift deed
+    donor_age = models.IntegerField(blank=True, null=True)
+    donee_age = models.IntegerField(blank=True, null=True)
+    gift_amount = models.FloatField(blank=True, null=True)
+    cheque_date = models.CharField(max_length=255, blank=True, null=True)
+    branch_name = models.CharField(max_length=255, blank=True, null=True)
+    witness_1_address = models.CharField(max_length=255, blank=True, null=True)
+    witness_2_address = models.CharField(max_length=255, blank=True, null=True)
+
+    #agreement of license between trade mark owner and manufacturer
+    licensor_company_name = models.CharField(max_length=255, blank=True, null=True)
+    licensor_address = models.CharField(max_length=255, blank=True, null=True)
+    licensee_business = models.CharField(max_length=255, blank=True, null=True)
+    goods_description = models.CharField(max_length=255, blank=True, null=True)
+    licensee_factory_address = models.CharField(max_length=255, blank=True, null=True)
+    goods_price_per_item = models.FloatField(blank=True, null=True)
+    monthly_quantity_of_goods_to_be_supplied_by_licensee = models.CharField(max_length=255, blank=True, null=True)
+    licensor_business_address = models.CharField(max_length=255, blank=True, null=True)
+    royalty_percentage = models.FloatField(blank=True, null=True)
+    agreement_duration = models.CharField(max_length=255, blank=True, null=True)
+    licensor_witness_name = models.CharField(max_length=255, blank=True, null=True)
+    licensee_witness_name = models.CharField(max_length=255, blank=True, null=True)
+
+    #draft of affidavit and indemnity
+    affiant_name = models.CharField(max_length=255, blank=True, null=True)
+    beneficiary_name = models.CharField(max_length=255, blank=True, null=True)
+    affiant_age = models.IntegerField(blank=True, null=True)
+    premises_address = models.CharField(max_length=255, blank=True, null=True)
+    name_of_licensor_of_premise = models.CharField(max_length=255, blank=True, null=True)
+    leave_and_license_agreement_date = models.CharField(max_length=255, blank=True, null=True)
+    authority_name = models.CharField(max_length=255, blank=True, null=True)
+    indemnified_party = models.CharField(max_length=255, blank=True, null=True)
+    name_of_the_entity_suffering_damages_due_to_affiants_non_compliance = models.CharField(max_length=255, blank=True, null=True)
+    authority_name = models.CharField(max_length=255, blank=True, null=True)
+    legal_advising_party = models.CharField(max_length=255, blank=True, null=True)
+    
+    #agreement between independent contractor and service provider
+    company_address = models.CharField(max_length=255, blank=True, null=True)
+    independent_contractor_name = models.CharField(max_length=255, blank=True, null=True)
+    termination_notice_period = models.CharField(max_length=255, blank=True, null=True)
+    governing_state = models.CharField(max_length=255, blank=True, null=True)
+    name_of_contractor = models.CharField(max_length=255, blank=True, null=True)
+    the_work_or_service_to_be_performed = models.CharField(max_length=255, blank=True, null=True)
+    maximum_compensation_amount = models.FloatField(blank=True, null=True)
+    lump_sum_amount = models.FloatField(blank=True, null=True)
+    payment_schedule = models.CharField(max_length=255, blank=True, null=True)
+
+    #NDA
+    subject_of_first_party_information = models.CharField(max_length=255, blank=True, null=True)
+    subject_of_second_party_information = models.CharField(max_length=255, blank=True, null=True)
+    oral_disclosure_notice_days = models.IntegerField(blank=True, null=True)
+    confidentiality_notice_days = models.IntegerField(blank=True, null=True)
+    confidentiality_period = models.CharField(max_length=255, blank=True, null=True)
+    export_country = models.CharField(max_length=255, blank=True, null=True)
+    agreement_term = models.CharField(max_length=255, blank=True, null=True)
+    governing_law_location = models.CharField(max_length=255, blank=True, null=True)
+    party_1_designation = models.CharField(max_length=255, blank=True, null=True)
+    party_2_designation = models.CharField(max_length=255, blank=True, null=True)
+
+

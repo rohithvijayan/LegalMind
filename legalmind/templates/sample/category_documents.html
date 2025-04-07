@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category|title }} Documents</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #004080;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            background-color: #0080ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        .back {
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #004080;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+        }
+        .back:hover {
+            background-color: #002a5c;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ category|title }} Documents</h1>
+    <ul>
+        {% for doc_name, doc_link in documents.items %}
+            <li><a href="{{ doc_link }}">{{ doc_name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a class="back" href="/">← Back to Categories</a>
+</body>
+</html>

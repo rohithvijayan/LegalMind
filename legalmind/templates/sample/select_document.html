@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Document Category</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #004080;
+            font-size: 24px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .category {
+            background-color: #004080;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px auto;
+            width: 50%;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+        
+        .category:hover {
+            background-color: #002a5c;
+        }
+        
+        /* Use flexbox for better layout control */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Select a Legal Document Category</h1>
+    <div class = "categories">
+    <a class="category" href="/categories/will/">Will</a>
+    <a class="category" href="/categories/banking/">Banking</a>
+    <a class="category" href="/categories/bonds/">Bonds</a>
+    <a class="category" href="/categories/contracts/">Contracts</a>
+    <a class="category" href="/categories/corporate/">Corporate/Business</a>
+    <a class="category" href="/categories/criminal/">Criminal</a>
+    <a class="category" href="/categories/divorceandfamilylaw/">Divorce, Family Law</a>
+    <a class="category" href="/categories/property/">Property</a>
+    <a class="category" href="/categories/powerofattorney/">Power Of Attorney</a>
+    <a class="category" href="/categories/trademarkandcopyright/">Trademark and Copyright</a>
+    </div>
+</body>
+</html>

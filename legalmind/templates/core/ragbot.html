@@ -22,9 +22,8 @@
             <nav>
                 <ul>
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="{% url 'features' %}">Features</a></li>
+                    
                 </ul>
             </nav>
             <div class="buttons" id="buttons" style="display: flex;flex-direction: row;justify-content: space-between;gap: 2vh;text-align: center;align-items: center;text-transform: capitalize;">
@@ -94,9 +93,9 @@
                 </div>
                     <div class="document-preview">
                         <iframe
-                        src="../../media/PDF Viewer.png"
+                        src=""
                         width="100%"
-                        height="100%"
+                        height="500px"
                         style="border:none"
                         title="Embedded PDF Viewer, non-downloadable PDF" aria-placeholder="doc"
                         id="doc-prev"

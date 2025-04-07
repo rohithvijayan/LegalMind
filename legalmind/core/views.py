@@ -32,7 +32,7 @@ from langchain_core.prompts import ChatPromptTemplate
 #doc generation
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import WillForm, LicenseForm, LoanAgreementForm, DeedOfHypothecationForm, BailBondForm, ContractBondForm, SimpleMoneyBondForm, EmployeeBondForm, MortgageDeedForm, RentAgreementForm, SaleAgreementForm, BailPetitionForm, DeedOfAdoptionForm, LeaveAndLicenseAgreementForm
+from .forms import WillForm, LicenseForm, LoanAgreementForm, DeedOfHypothecationForm, BailBondForm, ContractBondForm, SimpleMoneyBondForm, EmployeeBondForm, MortgageDeedForm, RentAgreementForm, SaleAgreementForm, BailPetitionForm, DeedOfAdoptionForm, LeaveAndLicenseAgreementForm, PartnershipAgreementForm, DeedOfGiftOfImmoveablePropertyForm, MemorandumRecordingFamilySettlementForm, PartitionDeedForm,SeparationAgreementForm, GeneralPowerOfAttorneyForm, IrrevocablePowerOfAttorney, RevocationOfThePowerOfAttorneyForm, GiftDeedForm, AgreementLicenseBetweenTrademarkOwnerAndManufacturer, AffidavitAndIndemnityForm, AgreementBetweenIndependentContractorAndServiceProvider, NDAForm 
 import docx
 from django.shortcuts import render
 ################################################################
@@ -209,39 +209,63 @@ def generate_document(request, doc_type):
 TEMPLATES = {
     'will': 'Simple-will-LawRato3.docx',
     'license': 'Licence-to-use-Copyright-LawRato2.docx',
-    'loan_agreement': 'Loan-Agreement-LawRato3.docx',
-    'deed_of_hypothecation': 'Deed-of-Hypothecation-HP-LawRato4.docx',
-    'bail_bond': 'Bond-and-Bail-bond-under-CrPC-1973-after-Arrest-under-a-Warrant-LawRato.docx',
-    'contract_bond': 'Bond-to-Secure-the-Performance-of-a-Contract-LawRato2.docx',
-    'simple_money_bond': 'Simple-Money-Bond-LawRato2.docx',
-    'employee_bond_for_non_compete': 'Employee-Bond-for-Non-Compete-LawRato3.docx',
-    'simple_mortgage_deed': 'Simple-Mortgage-Deed-LawRato2.docx',
-    'rent_agreement': 'Lease-Deed-(for-a-term-of-years)-Rent-Agreement-LawRato3.docx',
-    'sale_agreement': 'Agreement-for-Sale-LawRato4.docx',
-    'bail_petition' : 'Anticipatory-Bail-Petition-Format-LawRato.docx',
-    'deed_of_adoption': 'Deed-of-Adoption-LawRato2.docx',
-    'leave_and_license_agreement': 'Leave-and-License-Agreement-LawRato2.docx',
-
+    'loan agreement': 'Loan-Agreement-LawRato3.docx',
+    'deed of hypothecation': 'Deed-of-Hypothecation-HP-LawRato4.docx',
+    'bail bond': 'Bond-and-Bail-bond-under-CrPC-1973-after-Arrest-under-a-Warrant-LawRato.docx',
+    'contract bond': 'Bond-to-Secure-the-Performance-of-a-Contract-LawRato2.docx',
+    'simple money bond': 'Simple-Money-Bond-LawRato2.docx',
+    'employee bond for non compete': 'Employee-Bond-for-Non-Compete-LawRato3.docx',
+    'simple mortgage deed': 'Simple-Mortgage-Deed-LawRato2.docx',
+    'rent agreement': 'Lease-Deed-(for-a-term-of-years)-Rent-Agreement-LawRato3.docx',
+    'sale agreement': 'Agreement-for-Sale-LawRato4.docx',
+    'bail petition' : 'Anticipatory-Bail-Petition-Format-LawRato.docx',
+    'deed of adoption': 'Deed-of-Adoption-LawRato2.docx',
+    'leave and license agreement': 'Leave-and-License-Agreement-LawRato2.docx',
+    'partnership deed' : 'Partnership-Deed-LawRato3.docx',
+    'deed of gift of immovable property': 'Deed-of-Gift-of-Moveable-Property-Immovable-LawRato4.docx',
+    'memorandum recording family settlement': 'Memorandum-Recording-Family-Settlement-LawRato2.docx',
+    'partition deed' : 'Partition-Deed-LawRato4.docx',
+    'separation agreement': 'Separation-Agreement-between-Husband-and-Wife-LawRato2.docx',
+    'general power of attorney': 'General-Power-of-Attorney-LawRato5.docx',
+    'irrevocable power of attorney': 'Irrevocable-Power-of-Attorney-LawRato2.docx',
+    'revocation of the power of attorney': 'Revocation-of-the-Power-of-Attorney-LawRato2.docx',
+    'sample gift deed': 'SAMPLE-GIFT-DEED-FOR-GIFTING-CASH-TO-SONDAUGHTER-LawRato.docx',
+    'agreement license between trademark owner and manufacturer': 'Agreement-of-License-between-Trade-Mark-Owner-and-a-Manufacturer-LawRato2.docx',
+    'affidavit and indemnity' : 'Affidavit-and-Indemnity-LawRato3.docx',
+    'agreement between independent contractor and service provider' : 'Agreement-between-Independent-Contractor-and-Service-Provider-LawRato3.docx',
+    'nda' : 'Confidential-Information-and-Non-Disclosure-Agreement-NDA-LawRato3.docx'
 }
 
 FORMS = {
     'will': WillForm,
     'license': LicenseForm,
-    'loan_agreement': LoanAgreementForm,
-    'deed_of_hypothecation' : DeedOfHypothecationForm,
-    'bail_bond': BailBondForm,
-    'contract_bond': ContractBondForm,
-    'simple_money_bond': SimpleMoneyBondForm,
-    'employee_bond_for_non_compete': EmployeeBondForm,
-    'simple_mortgage_deed' : MortgageDeedForm,
-    'rent_agreement' : RentAgreementForm,
-    'sale_agreement' : SaleAgreementForm,
-    'bail_petition' : BailPetitionForm,
-    'deed_of_adoption' : DeedOfAdoptionForm,
-    'leave_and_license_agreement': LeaveAndLicenseAgreementForm,
+    'loan agreement': LoanAgreementForm,
+    'deed of hypothecation' : DeedOfHypothecationForm,
+    'bail bond': BailBondForm,
+    'contract bond': ContractBondForm,
+    'simple money bond': SimpleMoneyBondForm,
+    'employee bond for non compete': EmployeeBondForm,
+    'simple mortgage deed' : MortgageDeedForm,
+    'rent agreement' : RentAgreementForm,
+    'sale agreement' : SaleAgreementForm,
+    'bail petition' : BailPetitionForm,
+    'deed of adoption' : DeedOfAdoptionForm,
+    'leave and license agreement': LeaveAndLicenseAgreementForm,
+    'partnership deed' : PartnershipAgreementForm,
+    'deed of gift of immovable property': DeedOfGiftOfImmoveablePropertyForm,
+    'memorandum recording family settlement' : MemorandumRecordingFamilySettlementForm,
+    'partition deed' : PartitionDeedForm,
+    'separation agreement': SeparationAgreementForm,
+    'general power of attorney' : GeneralPowerOfAttorneyForm,
+    'irrevocable power of attorney': IrrevocablePowerOfAttorney,
+    'revocation of the power of attorney': RevocationOfThePowerOfAttorneyForm,
+    'sample gift deed' : GiftDeedForm,
+    'agreement license between trademark owner and manufacturer': AgreementLicenseBetweenTrademarkOwnerAndManufacturer,
+    'affidavit and indemnity': AffidavitAndIndemnityForm,
+    'agreement between independent contractor and service provider': AgreementBetweenIndependentContractorAndServiceProvider,
+    'nda' : NDAForm,
 
 }
-
 def select_document(request):
     return render(request, 'core/select_document.html')
 
@@ -276,35 +300,55 @@ CATEGORY_DOCUMENTS = {
         'Simple Will': '/will/',
     },
     'banking': {
-        'Loan Agreement': '/loan_agreement/',
-        'Deed Of Hypothecation' : '/deed_of_hypothecation/',
+        'Loan Agreement': '/loan agreement/',
+        'Deed Of Hypothecation' : '/deed of hypothecation/',
 
     },
     'bonds': {
-        'Bail Bond': '/bail_bond/',
-        'Bond to Secure Performance of a Contract': '/contract_bond/',
-        'Employee Bond for Non-Compete': '/employee_bond_for_non_compete/',
-        'Simple Money Bond': '/simple_money_bond/',
+        'Bail Bond': '/bail bond/',
+        'Bond to Secure Performance of a Contract': '/contract bond/',
+        'Employee Bond for Non-Compete': '/employee bond for non compete/',
+        'Simple Money Bond': '/simple money bond/',
     },
     'contracts': {
-        'Rent Agreement (for a term of years)': '/rent_agreement/',
-        'Simple Mortgage Deed': '/simple_mortgage_deed/',
-        'Leave and License Agreement': '/leave_and_license_agreement/',
+        'Rent Agreement (for a term of years)': '/rent agreement/',
+        'Simple Mortgage Deed': '/simple mortgage deed/',
+        'Leave and License Agreement': '/leave and license agreement/',
 
     },
     'corporate': {
-        'Agreement for Sale': '/sale_agreement/',
+        'Agreement for Sale': '/sale agreement/',
+        'Partnership Deed': '/partnership deed/',
+        'Affidavit And Indemnity': '/affidavit and indemnity/',
+        'Agreement Between Independent Contractor And Service Provider': '/agreement between independent contractor and service provider/',
+        'Non Disclosure Agreement': '/nda/',
+
     },
     'criminal': {
-        'Anticipatory Bail Petition Form' : '/bail_petition/',
+        'Anticipatory Bail Petition Form' : '/bail petition/',
 
     },
     'divorceandfamilylaw' : {
-        'Deed Of Adoption' : '/deed_of_adoption/',
+        'Deed Of Adoption' : '/deed of adoption/',
+        'Deed Of Gift Of Immovable Property' : '/deed of gift of immovable property/',
+        'Memorandum Recording Family Settlement' : '/memorandum recording family settlement/',
+        'Partition Deed': '/partition deed/',
+        'Separation Agreement': '/separation agreement/',
+
+
+    },
+    'property': {
+        'sample gift deed': '/sample gift deed/',
+    },
+    'powerofattorney': {
+        'General Power Of Attorney': '/general power of attorney/',
+        'Irrevocable Power Of Attorney': '/irrevocable power of attorney/',
+        'Revocation Of The Power Of Attorney': '/revocation of the power of attorney/',
 
     },
     'trademarkandcopyright' : {
         'License to use Copyright' : '/license/',
+        'Agreement License Between Trademark Owner And Manufacturer': '/agreement license between trademark owner and manufacturer/',
 
     },
 

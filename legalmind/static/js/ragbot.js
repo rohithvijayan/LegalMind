@@ -51,7 +51,7 @@ async function uploadFile(){
 function clearFile(){
     const uploadInput=document.getElementById("uploadedFile")
     uploadInput.value=''
-    document.getElementById("doc-prev").src='../../media/PDF Viewer.png'
+    document.getElementById("doc-prev").src=''
 }
 
 async function Process(){
